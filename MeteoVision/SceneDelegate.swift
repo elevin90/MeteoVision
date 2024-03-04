@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       return
     }
     window = UIWindow(windowScene: windowScene)
-    let viewController = ViewController()
+    let viewController = CountriesSearchViewController()
     window?.rootViewController = viewController
     window?.makeKeyAndVisible()
   }

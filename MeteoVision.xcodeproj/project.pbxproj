@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		CBB2C24B2B967B7E00642D91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C24A2B967B7E00642D91 /* AppDelegate.swift */; };
 		CBB2C24D2B967B7E00642D91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C24C2B967B7E00642D91 /* SceneDelegate.swift */; };
-		CBB2C24F2B967B7E00642D91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C24E2B967B7E00642D91 /* ViewController.swift */; };
+		CBB2C24F2B967B7E00642D91 /* CountriesSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C24E2B967B7E00642D91 /* CountriesSearchViewController.swift */; };
 		CBB2C2542B967B7F00642D91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB2C2532B967B7F00642D91 /* Assets.xcassets */; };
 		CBB2C2572B967B7F00642D91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB2C2552B967B7F00642D91 /* LaunchScreen.storyboard */; };
 		CBB2C2622B967B7F00642D91 /* MeteoVisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C2612B967B7F00642D91 /* MeteoVisionTests.swift */; };
 		CBB2C26C2B967B7F00642D91 /* MeteoVisionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C26B2B967B7F00642D91 /* MeteoVisionUITests.swift */; };
 		CBB2C26E2B967B7F00642D91 /* MeteoVisionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C26D2B967B7F00642D91 /* MeteoVisionUITestsLaunchTests.swift */; };
+		CBEF35472B967FBF00B2C160 /* MVLocalCountriesProvider in Frameworks */ = {isa = PBXBuildFile; productRef = CBEF35462B967FBF00B2C160 /* MVLocalCountriesProvider */; };
+		CBEF354A2B967FEA00B2C160 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF35492B967FEA00B2C160 /* UIApplication+Extensions.swift */; };
+		CBEF354D2B96807700B2C160 /* CitiesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF354C2B96807700B2C160 /* CitiesListView.swift */; };
+		CBEF354F2B96809000B2C160 /* CityListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF354E2B96809000B2C160 /* CityListRow.swift */; };
+		CBEF35512B9680A500B2C160 /* CitiesListTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF35502B9680A500B2C160 /* CitiesListTipView.swift */; };
+		CBEF35532B9680B800B2C160 /* CitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF35522B9680B800B2C160 /* CitiesListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +44,7 @@
 		CBB2C2472B967B7E00642D91 /* MeteoVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeteoVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB2C24A2B967B7E00642D91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBB2C24C2B967B7E00642D91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CBB2C24E2B967B7E00642D91 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CBB2C24E2B967B7E00642D91 /* CountriesSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesSearchViewController.swift; sourceTree = "<group>"; };
 		CBB2C2532B967B7F00642D91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBB2C2562B967B7F00642D91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBB2C2582B967B7F00642D91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +53,12 @@
 		CBB2C2672B967B7F00642D91 /* MeteoVisionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeteoVisionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB2C26B2B967B7F00642D91 /* MeteoVisionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoVisionUITests.swift; sourceTree = "<group>"; };
 		CBB2C26D2B967B7F00642D91 /* MeteoVisionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoVisionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CBEF35442B967DD500B2C160 /* MVLocalCountriesProvider */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MVLocalCountriesProvider; sourceTree = "<group>"; };
+		CBEF35492B967FEA00B2C160 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		CBEF354C2B96807700B2C160 /* CitiesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListView.swift; sourceTree = "<group>"; };
+		CBEF354E2B96809000B2C160 /* CityListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListRow.swift; sourceTree = "<group>"; };
+		CBEF35502B9680A500B2C160 /* CitiesListTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListTipView.swift; sourceTree = "<group>"; };
+		CBEF35522B9680B800B2C160 /* CitiesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBEF35472B967FBF00B2C160 /* MVLocalCountriesProvider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +90,12 @@
 		CBB2C23E2B967B7E00642D91 = {
 			isa = PBXGroup;
 			children = (
+				CBEF35442B967DD500B2C160 /* MVLocalCountriesProvider */,
 				CBB2C2492B967B7E00642D91 /* MeteoVision */,
 				CBB2C2602B967B7F00642D91 /* MeteoVisionTests */,
 				CBB2C26A2B967B7F00642D91 /* MeteoVisionUITests */,
 				CBB2C2482B967B7E00642D91 /* Products */,
+				CBEF35452B967FBF00B2C160 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,9 +112,11 @@
 		CBB2C2492B967B7E00642D91 /* MeteoVision */ = {
 			isa = PBXGroup;
 			children = (
+				CBEF35482B967FDB00B2C160 /* Extensions */,
 				CBB2C24A2B967B7E00642D91 /* AppDelegate.swift */,
+				CBEF354B2B96806600B2C160 /* CitiesList */,
 				CBB2C24C2B967B7E00642D91 /* SceneDelegate.swift */,
-				CBB2C24E2B967B7E00642D91 /* ViewController.swift */,
+				CBB2C24E2B967B7E00642D91 /* CountriesSearchViewController.swift */,
 				CBB2C2532B967B7F00642D91 /* Assets.xcassets */,
 				CBB2C2552B967B7F00642D91 /* LaunchScreen.storyboard */,
 				CBB2C2582B967B7F00642D91 /* Info.plist */,
@@ -124,6 +141,32 @@
 			path = MeteoVisionUITests;
 			sourceTree = "<group>";
 		};
+		CBEF35452B967FBF00B2C160 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CBEF35482B967FDB00B2C160 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CBEF35492B967FEA00B2C160 /* UIApplication+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CBEF354B2B96806600B2C160 /* CitiesList */ = {
+			isa = PBXGroup;
+			children = (
+				CBEF354C2B96807700B2C160 /* CitiesListView.swift */,
+				CBEF354E2B96809000B2C160 /* CityListRow.swift */,
+				CBEF35502B9680A500B2C160 /* CitiesListTipView.swift */,
+				CBEF35522B9680B800B2C160 /* CitiesListViewModel.swift */,
+			);
+			path = CitiesList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +183,9 @@
 			dependencies = (
 			);
 			name = MeteoVision;
+			packageProductDependencies = (
+				CBEF35462B967FBF00B2C160 /* MVLocalCountriesProvider */,
+			);
 			productName = MeteoVision;
 			productReference = CBB2C2472B967B7E00642D91 /* MeteoVision.app */;
 			productType = "com.apple.product-type.application";
@@ -254,9 +300,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBB2C24F2B967B7E00642D91 /* ViewController.swift in Sources */,
+				CBB2C24F2B967B7E00642D91 /* CountriesSearchViewController.swift in Sources */,
 				CBB2C24B2B967B7E00642D91 /* AppDelegate.swift in Sources */,
+				CBEF354D2B96807700B2C160 /* CitiesListView.swift in Sources */,
+				CBEF354A2B967FEA00B2C160 /* UIApplication+Extensions.swift in Sources */,
 				CBB2C24D2B967B7E00642D91 /* SceneDelegate.swift in Sources */,
+				CBEF35532B9680B800B2C160 /* CitiesListViewModel.swift in Sources */,
+				CBEF35512B9680A500B2C160 /* CitiesListTipView.swift in Sources */,
+				CBEF354F2B96809000B2C160 /* CityListRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +644,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CBEF35462B967FBF00B2C160 /* MVLocalCountriesProvider */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MVLocalCountriesProvider;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CBB2C23F2B967B7E00642D91 /* Project object */;
 }
