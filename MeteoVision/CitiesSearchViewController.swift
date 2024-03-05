@@ -8,21 +8,33 @@
 import UIKit
 import SwiftUI
 import TipKit
+import Combine
 
-final class CountriesSearchViewController: UIViewController {
-
+final class CitiesSearchViewController: UIViewController {
+  let citiesListViewModel = CitiesListViewModel()
+  private var cancellables: Set<AnyCancellable> = []
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    citiesListViewModel.$locationCoordinates
+      .sink { [weak self] coordinates in
+        // Handle the updated coordinates here
+        print("Updated coordinates: \(coordinates?.latitude), \(coordinates?.longitude)")
+        
+        // Update your UI or perform any other actions
+      }
+      .store(in: &cancellables)
     setupCountriesList()
   }
 
   private func setupCountriesList() {
-    let countriesListViewController = UIHostingController(rootView: CitiesListView().task {
+    let rootView = CitiesListView(viewModel: citiesListViewModel).task {
       try? Tips.configure([
         .displayFrequency(.immediate),
         .datastoreLocation(.applicationDefault)
       ])
-    })
+    }
+    let countriesListViewController = UIHostingController(rootView: rootView)
     let countriesListView = countriesListViewController.view
     guard let countriesListView else {
       return

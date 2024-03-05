@@ -11,9 +11,8 @@ public protocol MVLocalCountriesProviding {
 
 public final class MVLocalCountriesProvider: MVLocalCountriesProviding {
   private var countries: [MVLocalCountry] = []
-  static public let shared = MVLocalCountriesProvider()
   
-  private init() {
+  public init() {
     loadCountriesFromJSON()
   }
   

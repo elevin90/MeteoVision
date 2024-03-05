@@ -8,16 +8,25 @@
 import Foundation
 import Combine
 import MVLocalCountriesProvider
+import MVLocationProvider
+import CoreLocation
 
 final class CitiesListViewModel: ObservableObject {
   @Published private(set) var searchResults: [String] = []
   @Published var searchQuery = ""
-  private let countriesProvider: MVLocalCountriesProviding
-  private var cancellables: Set<AnyCancellable> = []
+  @Published private(set) var locationCoordinates: CLLocationCoordinate2D?
   
-  init(countriesProvider: MVLocalCountriesProviding = MVLocalCountriesProvider.shared) {
+  private let countriesProvider: MVLocalCountriesProviding
+  private var locationProvider: MVLocationProviding
+  private var cancellables: Set<AnyCancellable> = []
+ 
+  init(
+    countriesProvider: MVLocalCountriesProviding = MVLocalCountriesProvider(),
+    locationProvider: MVLocationProviding = MVLocationProvider()
+  ) {
     self.countriesProvider = countriesProvider
-
+    self.locationProvider = locationProvider
+    
     $searchQuery
       .debounce(for: .seconds(0.2), scheduler: RunLoop.current)
       .sink {[weak self] username in
@@ -27,5 +36,18 @@ final class CitiesListViewModel: ObservableObject {
         self.searchResults = self.countriesProvider.fetchCities(with: self.searchQuery)
       }
       .store(in: &cancellables)
+    
+    self.locationProvider.didUpdateLocationCoordinatesHandler = { [weak self] coordinates in
+      self?.locationCoordinates = coordinates
+    }
+  }
+  
+  func requestLocation() {
+    locationProvider.requestLocation()
+  }
+  
+  func geocodeCoordinatesFor(_ cityString: String) async {
+    let coordinates = try? await locationProvider.geocode(adress: cityString)
+    locationCoordinates = coordinates
   }
 }

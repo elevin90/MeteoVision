@@ -7,9 +7,14 @@
 
 import SwiftUI
 import TipKit
+import CoreLocationUI
 
 struct CitiesListView: View {
-  @StateObject private var viewModel = CitiesListViewModel()
+  @StateObject private var viewModel: CitiesListViewModel
+  
+  init(viewModel: CitiesListViewModel) {
+    self._viewModel = StateObject(wrappedValue: viewModel)
+  }
   private let tipView = CitiesListTipView()
   var onTap: ((String) -> Void)?
   
@@ -28,7 +33,11 @@ struct CitiesListView: View {
   private var searchList: some View {
       List {
         ForEach(viewModel.searchResults, id: \.self) { title in
-            CityListRow(cityTitle: title)
+          CityListRow(cityTitle: title).onTapGesture {
+            Task {
+              await viewModel.geocodeCoordinatesFor(title)
+            }
+          }
         }
     }
     .overlay {
@@ -52,33 +61,25 @@ struct CitiesListView: View {
           .opacity(viewModel.searchQuery == "" ? 0 : 1)
       }
     }
-    .padding(8)
+    .padding(12)
     .background(Color(.secondarySystemBackground))
     .cornerRadius(8)
-  }
-  
-  private var locationButton: some View {
-    Button(action: {
-      UIApplication.shared.endEditing(true)
-    }, label: {
-      Image(systemName: "location.square.fill")
-    })
-    .font(.largeTitle)
-    .popoverTip(tipView, arrowEdge: .top)
-    .onTapGesture {
-      tipView.invalidate(reason: .actionPerformed)
-    }
   }
   
   private var searchBar: some View {
     HStack {
       searchField
-      locationButton
+      LocationButton(.currentLocation) {
+        viewModel.requestLocation()
+        tipView.invalidate(reason: .actionPerformed)
+      }
+      .symbolVariant(.fill)
+      .labelStyle(.iconOnly)
     }
     .padding()
   }
 }
 
 #Preview {
-  CitiesListView()
+  CitiesListView(viewModel: CitiesListViewModel())
 }
