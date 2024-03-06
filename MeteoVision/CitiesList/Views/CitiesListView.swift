@@ -11,12 +11,11 @@ import CoreLocationUI
 
 struct CitiesListView: View {
   @StateObject private var viewModel: CitiesListViewModel
-  
+  private let tipView = CitiesListTipView()
+
   init(viewModel: CitiesListViewModel) {
     self._viewModel = StateObject(wrappedValue: viewModel)
   }
-  private let tipView = CitiesListTipView()
-  var onTap: ((String) -> Void)?
   
   var body: some View {
     searchBar
@@ -41,9 +40,9 @@ struct CitiesListView: View {
         }
     }
     .overlay {
+      /// In case there aren't any search results, we can
+      /// show the new content unavailable view.
       if viewModel.searchQuery.count > 1 && viewModel.searchResults.isEmpty {
-        /// In case there aren't any search results, we can
-        /// show the new content unavailable view.
         ContentUnavailableView.search
       }
     }

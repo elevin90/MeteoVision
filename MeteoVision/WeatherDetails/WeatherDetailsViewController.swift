@@ -1,39 +1,35 @@
 //
-//  ViewController.swift
+//  WeatherDetailsViewController.swift
 //  MeteoVision
 //
-//  Created by YAUHENI LEVIN on 4.03.24.
+//  Created by YAUHENI LEVIN on 6.03.24.
 //
 
 import UIKit
+import CoreLocation
 import SwiftUI
-import TipKit
-import Combine
 
-final class CitiesSearchViewController: UIViewController {
-  let citiesListViewModel = CitiesListViewModel()
-  private var cancellables: Set<AnyCancellable> = []
+final class WeatherDetailsViewController: UIViewController {
+  private let locationCoordinates: CLLocationCoordinate2D
+  
+  init(locationCoordinates: CLLocationCoordinate2D) {
+    self.locationCoordinates = locationCoordinates
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  @available(*, unavailable)
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    citiesListViewModel.$locationCoordinates
-      .sink { [weak self] coordinates in
-        // Handle the updated coordinates here
-        print("Updated coordinates: \(coordinates?.latitude), \(coordinates?.longitude)")
-        
-        // Update your UI or perform any other actions
-      }
-      .store(in: &cancellables)
     setupCountriesList()
   }
-
+  
   private func setupCountriesList() {
-    let rootView = CitiesListView(viewModel: citiesListViewModel).task {
-      try? Tips.configure([
-        .displayFrequency(.immediate),
-        .datastoreLocation(.applicationDefault)
-      ])
-    }
+    let rootView = WeatherForecastListView(viewModel: WeatherForecastListViewModel(locationCoordinates: locationCoordinates))
+    
     let countriesListViewController = UIHostingController(rootView: rootView)
     let countriesListView = countriesListViewController.view
     guard let countriesListView else {

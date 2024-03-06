@@ -13,13 +13,13 @@ import CoreLocation
 
 final class CitiesListViewModel: ObservableObject {
   @Published private(set) var searchResults: [String] = []
+  @MainActor @Published private(set) var locationCoordinates: CLLocationCoordinate2D?
   @Published var searchQuery = ""
-  @Published private(set) var locationCoordinates: CLLocationCoordinate2D?
   
   private let countriesProvider: MVLocalCountriesProviding
   private var locationProvider: MVLocationProviding
   private var cancellables: Set<AnyCancellable> = []
- 
+  
   init(
     countriesProvider: MVLocalCountriesProviding = MVLocalCountriesProvider(),
     locationProvider: MVLocationProviding = MVLocationProvider()
@@ -38,7 +38,12 @@ final class CitiesListViewModel: ObservableObject {
       .store(in: &cancellables)
     
     self.locationProvider.didUpdateLocationCoordinatesHandler = { [weak self] coordinates in
-      self?.locationCoordinates = coordinates
+      guard let self else {
+        return
+      }
+      Task {
+        await self.updateLocationCoordinates(from: coordinates)
+      }
     }
   }
   
@@ -48,6 +53,11 @@ final class CitiesListViewModel: ObservableObject {
   
   func geocodeCoordinatesFor(_ cityString: String) async {
     let coordinates = try? await locationProvider.geocode(adress: cityString)
+    await updateLocationCoordinates(from: coordinates)
+  }
+  
+  @MainActor
+  private func updateLocationCoordinates(from coordinates: CLLocationCoordinate2D?) {
     locationCoordinates = coordinates
   }
 }

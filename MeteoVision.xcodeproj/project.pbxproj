@@ -22,6 +22,10 @@
 		CBEF35512B9680A500B2C160 /* CitiesListTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF35502B9680A500B2C160 /* CitiesListTipView.swift */; };
 		CBEF35532B9680B800B2C160 /* CitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF35522B9680B800B2C160 /* CitiesListViewModel.swift */; };
 		CBEF35572B97D74000B2C160 /* MVLocationProvider in Frameworks */ = {isa = PBXBuildFile; productRef = CBEF35562B97D74000B2C160 /* MVLocationProvider */; };
+		CBEF355A2B98EFED00B2C160 /* WeatherDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF35592B98EFED00B2C160 /* WeatherDetailsViewController.swift */; };
+		CBEF355F2B99048D00B2C160 /* MVAPIClient in Frameworks */ = {isa = PBXBuildFile; productRef = CBEF355E2B99048D00B2C160 /* MVAPIClient */; };
+		CBEF35632B991A2100B2C160 /* WeatherDetailsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF35622B991A2100B2C160 /* WeatherDetailsListViewModel.swift */; };
+		CBEF35652B991DB900B2C160 /* WeatherForecastListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF35642B991DB900B2C160 /* WeatherForecastListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		CBEF35502B9680A500B2C160 /* CitiesListTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListTipView.swift; sourceTree = "<group>"; };
 		CBEF35522B9680B800B2C160 /* CitiesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListViewModel.swift; sourceTree = "<group>"; };
 		CBEF35552B97D69F00B2C160 /* MVLocationProvider */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MVLocationProvider; sourceTree = "<group>"; };
+		CBEF35592B98EFED00B2C160 /* WeatherDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsViewController.swift; sourceTree = "<group>"; };
+		CBEF355B2B98F2F000B2C160 /* MVAPIClient */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MVAPIClient; sourceTree = "<group>"; };
+		CBEF35622B991A2100B2C160 /* WeatherDetailsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsListViewModel.swift; sourceTree = "<group>"; };
+		CBEF35642B991DB900B2C160 /* WeatherForecastListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +78,7 @@
 			files = (
 				CBEF35472B967FBF00B2C160 /* MVLocalCountriesProvider in Frameworks */,
 				CBEF35572B97D74000B2C160 /* MVLocationProvider in Frameworks */,
+				CBEF355F2B99048D00B2C160 /* MVAPIClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +102,7 @@
 		CBB2C23E2B967B7E00642D91 = {
 			isa = PBXGroup;
 			children = (
+				CBEF355B2B98F2F000B2C160 /* MVAPIClient */,
 				CBEF35552B97D69F00B2C160 /* MVLocationProvider */,
 				CBEF35442B967DD500B2C160 /* MVLocalCountriesProvider */,
 				CBB2C2492B967B7E00642D91 /* MeteoVision */,
@@ -118,8 +128,8 @@
 			children = (
 				CBB2C24A2B967B7E00642D91 /* AppDelegate.swift */,
 				CBB2C24C2B967B7E00642D91 /* SceneDelegate.swift */,
+				CBEF35582B98EFC400B2C160 /* WeatherDetails */,
 				CBEF354B2B96806600B2C160 /* CitiesList */,
-				CBB2C24E2B967B7E00642D91 /* CitiesSearchViewController.swift */,
 				CBEF35482B967FDB00B2C160 /* Extensions */,
 				CBB2C2532B967B7F00642D91 /* Assets.xcassets */,
 				CBB2C2552B967B7F00642D91 /* LaunchScreen.storyboard */,
@@ -163,12 +173,39 @@
 		CBEF354B2B96806600B2C160 /* CitiesList */ = {
 			isa = PBXGroup;
 			children = (
-				CBEF354C2B96807700B2C160 /* CitiesListView.swift */,
-				CBEF354E2B96809000B2C160 /* CityListRow.swift */,
-				CBEF35502B9680A500B2C160 /* CitiesListTipView.swift */,
+				CBEF355D2B98FD0600B2C160 /* Views */,
+				CBEF355C2B98FCFF00B2C160 /* Controller */,
 				CBEF35522B9680B800B2C160 /* CitiesListViewModel.swift */,
 			);
 			path = CitiesList;
+			sourceTree = "<group>";
+		};
+		CBEF35582B98EFC400B2C160 /* WeatherDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CBEF35592B98EFED00B2C160 /* WeatherDetailsViewController.swift */,
+				CBEF35622B991A2100B2C160 /* WeatherDetailsListViewModel.swift */,
+				CBEF35642B991DB900B2C160 /* WeatherForecastListView.swift */,
+			);
+			path = WeatherDetails;
+			sourceTree = "<group>";
+		};
+		CBEF355C2B98FCFF00B2C160 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CBB2C24E2B967B7E00642D91 /* CitiesSearchViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CBEF355D2B98FD0600B2C160 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CBEF354C2B96807700B2C160 /* CitiesListView.swift */,
+				CBEF354E2B96809000B2C160 /* CityListRow.swift */,
+				CBEF35502B9680A500B2C160 /* CitiesListTipView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +227,7 @@
 			packageProductDependencies = (
 				CBEF35462B967FBF00B2C160 /* MVLocalCountriesProvider */,
 				CBEF35562B97D74000B2C160 /* MVLocationProvider */,
+				CBEF355E2B99048D00B2C160 /* MVAPIClient */,
 			);
 			productName = MeteoVision;
 			productReference = CBB2C2472B967B7E00642D91 /* MeteoVision.app */;
@@ -310,8 +348,11 @@
 				CBEF354D2B96807700B2C160 /* CitiesListView.swift in Sources */,
 				CBEF354A2B967FEA00B2C160 /* UIApplication+Extensions.swift in Sources */,
 				CBB2C24D2B967B7E00642D91 /* SceneDelegate.swift in Sources */,
+				CBEF355A2B98EFED00B2C160 /* WeatherDetailsViewController.swift in Sources */,
 				CBEF35532B9680B800B2C160 /* CitiesListViewModel.swift in Sources */,
 				CBEF35512B9680A500B2C160 /* CitiesListTipView.swift in Sources */,
+				CBEF35632B991A2100B2C160 /* WeatherDetailsListViewModel.swift in Sources */,
+				CBEF35652B991DB900B2C160 /* WeatherForecastListView.swift in Sources */,
 				CBEF354F2B96809000B2C160 /* CityListRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,6 +701,10 @@
 		CBEF35562B97D74000B2C160 /* MVLocationProvider */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MVLocationProvider;
+		};
+		CBEF355E2B99048D00B2C160 /* MVAPIClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MVAPIClient;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
