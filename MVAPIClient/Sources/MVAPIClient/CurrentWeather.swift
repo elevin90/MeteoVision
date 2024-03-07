@@ -16,6 +16,16 @@ public struct Coordinates: Codable {
   }
 }
 
+public struct CurrentWeatherWind: Codable {
+  public let speed: Double
+  public let degree: Double
+  
+  enum CodingKeys: String, CodingKey {
+    case speed = "speed"
+    case degree = "deg"
+  }
+}
+
 public struct CurrentWeatherDetaisls: Codable {
   public let temperature: Double
   public let feelsLike: Double
@@ -61,6 +71,7 @@ public struct WeatherSunDetails: Codable {
 public struct CurrentWeather: Codable {
   public let coordinates: Coordinates
   public let conditions: [WeatherConditions]
+  public let wind: CurrentWeatherWind
   public let details: CurrentWeatherDetaisls
   public let sunDetails: WeatherSunDetails
   public let city: String
@@ -71,6 +82,7 @@ public struct CurrentWeather: Codable {
     case details = "main"
     case sunDetails = "sys"
     case city = "name"
+    case wind = "wind"
   }
 }
 

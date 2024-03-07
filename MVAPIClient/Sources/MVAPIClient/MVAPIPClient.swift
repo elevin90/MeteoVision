@@ -26,10 +26,10 @@ extension MVAPIPClient {
     var request = URLRequest(url: url)
     request.httpMethod = endPoint.method.rawValue
     request.allHTTPHeaderFields = endPoint.header
-//    if let body = endPoint.body {
-//      request.httpBody = try? JSONSerialization.data(withJSONObject: body,
-//                                                     options: [])
-//    }
+    if let body = endPoint.body {
+      request.httpBody = try? JSONSerialization.data(withJSONObject: body,
+                                                     options: [])
+    }
     do {
       let (data, response) = try await URLSession.shared.data(for: request)
       guard let response = response as? HTTPURLResponse else {

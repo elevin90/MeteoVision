@@ -42,6 +42,6 @@ extension WeatherEndpoint: MVEndpoint {
   }
   
   var body: [String: Any]? {
-    [:]
+    nil
   }
 }

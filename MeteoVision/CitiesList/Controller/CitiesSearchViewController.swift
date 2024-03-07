@@ -22,10 +22,14 @@ final class CitiesSearchViewController: UIViewController {
         guard let self, let coordinates else {
           return
         }
-        let destinationViewController = WeatherDetailsViewController(locationCoordinates: coordinates)
+        let viewModel = WeatherDetailsViewModel(locationCoordinates: coordinates)
+        let destinationViewController = WeatherDetailsViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: destinationViewController)
-        navigationController.modalPresentationStyle = .fullScreen
-        self.present(navigationController, animated: true)
+        Task {
+          await UIApplication.shared.windows.first?.setRootViewController(navigationController, animated: true)
+        }
+//        navigationController.modalPresentationStyle = .fullScreen
+//        self.present(navigationController, animated: true)
       }
       .store(in: &cancellables)
     setupCountriesList()
@@ -57,4 +61,26 @@ final class CitiesSearchViewController: UIViewController {
 
     countriesListViewController.didMove(toParent: self)
   }
+}
+
+extension UIWindow {
+    @MainActor
+    func setRootViewController(_ newRootViewController: UIViewController, animated: Bool = true) async {
+        guard animated else {
+            rootViewController = newRootViewController
+            return
+        }
+
+        await withCheckedContinuation({ (continuation: CheckedContinuation<Void, Never>) in
+            UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve) {
+                let oldState: Bool = UIView.areAnimationsEnabled
+                UIView.setAnimationsEnabled(false)
+                self.rootViewController = newRootViewController
+                UIView.setAnimationsEnabled(oldState)
+            } completion: { _ in
+                continuation.resume()
+            }
+        })
+    }
+
 }
