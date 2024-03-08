@@ -7,7 +7,7 @@
 import Foundation
 
 enum WeatherEndpoint {
-  case currentDay(latitude: String, longtitude: String)
+  case currentDay(latitude: String, longtitude: String, units: String)
 }
 
 extension WeatherEndpoint: MVEndpoint {
@@ -16,10 +16,9 @@ extension WeatherEndpoint: MVEndpoint {
   }
   var path: String {
     return switch self {
-    case .currentDay(_, _):
+    case .currentDay(_, _, _):
       "/data/2.5/weather"
     }
-    
   }
   
   var method: MVRequestMethod {
@@ -32,11 +31,12 @@ extension WeatherEndpoint: MVEndpoint {
   
   var queryItems: [URLQueryItem] {
     return switch self {
-    case .currentDay(let latitude, let longtitude):
+    case .currentDay(let latitude, let longtitude, let units):
       [
         URLQueryItem(name: "APPID", value: APIKeys.key),
         URLQueryItem(name: "lon", value: longtitude),
-        URLQueryItem(name: "lat", value: latitude)
+        URLQueryItem(name: "lat", value: latitude),
+        URLQueryItem(name: "units", value: units)
       ]
     }
   }

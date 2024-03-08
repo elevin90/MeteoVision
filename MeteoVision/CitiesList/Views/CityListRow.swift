@@ -10,12 +10,16 @@ import SwiftUI
 struct CityListRow: View {
   let cityTitle: String
   
-    var body: some View {
+  var body: some View {
+    HStack {
       Text(cityTitle)
         .font(.system(size: 16, weight: .medium, design: .rounded))
         .foregroundColor(.defaultText)
-        .padding(.vertical, 6)
+      Spacer()
     }
+    .padding(.vertical, 6)
+    .contentShape(Rectangle())
+  }
 }
 
 #Preview {

@@ -7,32 +7,6 @@
 
 import UIKit
 
-enum VerticalTitleSubtitleViewType {
-  case windSpeed
-  case windDegree
-}
-
-struct VerticalTitleSubtitleViewModel {
-  let iconName: String
-  let value: String
-  let description: String
-}
-
-extension VerticalTitleSubtitleViewModel {
-  init(type: VerticalTitleSubtitleViewType, value: String) {
-    switch type {
-    case .windSpeed:
-      self.description = "Wind speed"
-      self.iconName = "wind"
-      self.value = value
-    case .windDegree:
-      self.description = "Wind temperature"
-      self.iconName = "thermometer.sun"
-      self.value = value
-    }
-  }
-}
-
 final class VerticalTitleSubtitleView: UIView {
   let type: VerticalTitleSubtitleViewType
   

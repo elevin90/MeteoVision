@@ -39,9 +39,9 @@ struct WeatherDetailsCityCellViewModel: WeatherDetailViewModeling {
     minimalTemperature: Double? = nil
   ) {
     self.location = location
-    self.temperature =  temperature.map { "\(Int($0.rounded()))" }
-    self.maxTemperature = maxTemperature.map { "\(Int($0.rounded()))" }
-    self.minimalTemperature = minimalTemperature.map { "\(Int($0.rounded()))" }
+    self.temperature =  temperature.map { "\(Int($0.rounded()))°" }
+    self.maxTemperature = maxTemperature.map { "\(Int($0.rounded()))°" }
+    self.minimalTemperature = minimalTemperature.map { "\(Int($0.rounded()))°" }
     self.statusCode = weatherConditions?.id ?? 0
     guard let weatherConditions else {
       self.weatherDescription = nil

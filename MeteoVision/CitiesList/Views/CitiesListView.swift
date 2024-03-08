@@ -32,7 +32,8 @@ struct CitiesListView: View {
   private var searchList: some View {
       List {
         ForEach(viewModel.searchResults, id: \.self) { title in
-          CityListRow(cityTitle: title).onTapGesture {
+          CityListRow(cityTitle: title)
+            .onTapGesture {
             Task {
               await viewModel.geocodeCoordinatesFor(title)
             }
@@ -80,5 +81,5 @@ struct CitiesListView: View {
 }
 
 #Preview {
-  CitiesListView(viewModel: CitiesListViewModel())
+  CitiesListView(viewModel: CitiesListViewModel(showType: .citySearch))
 }

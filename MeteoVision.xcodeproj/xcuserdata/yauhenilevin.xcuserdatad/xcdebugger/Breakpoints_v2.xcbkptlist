@@ -7,830 +7,127 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A"
+            uuid = "C4E705EB-9A60-4107-824E-68F715337ED7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
+            filePath = "MeteoVision/WeatherDetails/WeatherDetailsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "sendRequest(endPoint:responseModel:)"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "init(locationCoordinates:weatherSerivce:unitsProvider:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - e96a271624a97f97"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "2160">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - 204fc42bb2a12b35"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - 204fc42bb2a12cff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - 72db04d7c946c44f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - 72db04d7c946c385"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "168">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - c9837374e7b49276"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - c9837374e7b495bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "88">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - 72db04d7c946c44f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "96">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - 72db04d7c946c385"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "184">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - c9837374e7b49276"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "60">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - c9837374e7b495bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - e96a271624a97f97"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "1484">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - 204fc42bb2a12cff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - c9837374e7b495bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - 72db04d7c946c385"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "152">
-               </Location>
-               <Location
-                  uuid = "2CF6CA52-B7F2-485E-A221-C0CDECC3746A - c9837374e7b495bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "68">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB"
+            uuid = "1DD51969-0519-4E6B-831F-BF53FBCC1BC5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
+            filePath = "MeteoVision/Settings/SettingsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "sendRequest(endPoint:responseModel:)"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "selectUnit(at:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB - 86eac017129a5d97"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB - e96a271624a9785d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB - 204fc42bb2a12b35"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB - 72db04d7c946c44f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "96">
-               </Location>
-               <Location
-                  uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB - 72db04d7c946c44f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "1056">
-               </Location>
-               <Location
-                  uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB - c9837374e7b49276"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "60">
-               </Location>
-               <Location
-                  uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB - 72db04d7c946c44f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "1004">
-               </Location>
-               <Location
-                  uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB - 72db04d7c946c44f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "988">
-               </Location>
-               <Location
-                  uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB - 72db04d7c946c44f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB - 72db04d7c946c44f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "1040">
-               </Location>
-               <Location
-                  uuid = "97CBCA27-1979-475C-8236-86EE0A7DB0FB - c9837374e7b49276"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6FDCA903-D3C6-42C6-BB9E-B47E6BA62242"
+            uuid = "64D90D59-7D0F-4CB9-8562-BF267F70186C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
+            filePath = "MeteoVision/WeatherUnitsProvider.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "sendRequest(endPoint:responseModel:)"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "select(weatherUnit:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6FDCA903-D3C6-42C6-BB9E-B47E6BA62242 - 72db04d7c946c532"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "2304">
-               </Location>
-               <Location
-                  uuid = "6FDCA903-D3C6-42C6-BB9E-B47E6BA62242 - 72db04d7c946c532"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "2196">
-               </Location>
-               <Location
-                  uuid = "6FDCA903-D3C6-42C6-BB9E-B47E6BA62242 - 72db04d7c946c532"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "2180">
-               </Location>
-               <Location
-                  uuid = "6FDCA903-D3C6-42C6-BB9E-B47E6BA62242 - 72db04d7c946c532"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "2288">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CF20A47A-9215-4948-A0B9-2E708D595C33"
+            uuid = "11C8962C-0B6F-47BF-B438-DF2A681DCB3C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
+            filePath = "MeteoVision/WeatherDetails/WeatherDetailsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "sendRequest(endPoint:responseModel:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "fetchWeatherDetails()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "CF20A47A-9215-4948-A0B9-2E708D595C33 - 72db04d7c946c570"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "2588">
-               </Location>
-               <Location
-                  uuid = "CF20A47A-9215-4948-A0B9-2E708D595C33 - 72db04d7c946c570"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "2480">
-               </Location>
-               <Location
-                  uuid = "CF20A47A-9215-4948-A0B9-2E708D595C33 - 72db04d7c946c570"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "2464">
-               </Location>
-               <Location
-                  uuid = "CF20A47A-9215-4948-A0B9-2E708D595C33 - 72db04d7c946c570"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "2572">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3E484038-9C73-4BC2-9B7E-DDE55350FA25"
+            uuid = "06878A60-AD3E-4DE8-8828-2B7BDD8A8016"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
+            filePath = "MeteoVision/WeatherDetails/WeatherDetailsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "sendRequest(endPoint:responseModel:)"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "fetchWeatherDetails()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "3E484038-9C73-4BC2-9B7E-DDE55350FA25 - 72db04d7c946c3cb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "2872">
-               </Location>
-               <Location
-                  uuid = "3E484038-9C73-4BC2-9B7E-DDE55350FA25 - 72db04d7c946c3cb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "2764">
-               </Location>
-               <Location
-                  uuid = "3E484038-9C73-4BC2-9B7E-DDE55350FA25 - 72db04d7c946c3cb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "2748">
-               </Location>
-               <Location
-                  uuid = "3E484038-9C73-4BC2-9B7E-DDE55350FA25 - 72db04d7c946c3cb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "2856">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "65E7AF75-051D-4720-AB61-C9B2E89258A6"
+            uuid = "EAC02A9C-1F8F-453C-9072-D44E5EA0A24E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
+            filePath = "MeteoVision/WeatherDetails/WeatherDetailsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "sendRequest(endPoint:responseModel:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "fetchWeatherDetails()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "65E7AF75-051D-4720-AB61-C9B2E89258A6 - 72db04d7c946c4ae"
+                  uuid = "EAC02A9C-1F8F-453C-9072-D44E5EA0A24E - ba1a1fc68d0cde55"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
+                  symbolName = "(3) suspend resume partial function for MeteoVision.WeatherDetailsViewModel.fetchWeatherDetails() async -&gt; ()"
                   moduleName = "MeteoVision"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
+                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MeteoVision/WeatherDetails/WeatherDetailsViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "1972">
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "3476">
                </Location>
                <Location
-                  uuid = "65E7AF75-051D-4720-AB61-C9B2E89258A6 - 72db04d7c946c4ae"
+                  uuid = "EAC02A9C-1F8F-453C-9072-D44E5EA0A24E - 1e00c81292715856"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
+                  symbolName = "(4) suspend resume partial function for MeteoVision.WeatherDetailsViewModel.fetchWeatherDetails() async -&gt; ()"
                   moduleName = "MeteoVision"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
+                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MeteoVision/WeatherDetails/WeatherDetailsViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "1864">
-               </Location>
-               <Location
-                  uuid = "65E7AF75-051D-4720-AB61-C9B2E89258A6 - 72db04d7c946c4ae"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "1848">
-               </Location>
-               <Location
-                  uuid = "65E7AF75-051D-4720-AB61-C9B2E89258A6 - 72db04d7c946c4ae"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "1956">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B8AE2D22-1E1C-4CF4-B10C-FB77BC8835FF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "sendRequest(endPoint:responseModel:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B8AE2D22-1E1C-4CF4-B10C-FB77BC8835FF - 72db04d7c946c4ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "1540">
-               </Location>
-               <Location
-                  uuid = "B8AE2D22-1E1C-4CF4-B10C-FB77BC8835FF - 72db04d7c946c4ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "1480">
-               </Location>
-               <Location
-                  uuid = "B8AE2D22-1E1C-4CF4-B10C-FB77BC8835FF - 72db04d7c946c4ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "1464">
-               </Location>
-               <Location
-                  uuid = "B8AE2D22-1E1C-4CF4-B10C-FB77BC8835FF - 72db04d7c946c4ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MVAPIClient.MVAPIPClient.sendRequest&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Decodable&gt;(endPoint: MVAPIClient.MVEndpoint, responseModel: &#x3c4;_1_0.Type) async throws -&gt; &#x3c4;_1_0"
-                  moduleName = "MeteoVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yauhenilevin/Documents/Work/iOS/iOS%20Projects/2024/MeteoVision/MVAPIClient/Sources/MVAPIClient/MVAPIPClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "1524">
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "252">
                </Location>
             </Locations>
          </BreakpointContent>

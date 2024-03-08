@@ -37,10 +37,8 @@ final class WeatherDetailsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.navigationItem.title = "New title"
-    navigationController?.navigationBar.prefersLargeTitles = true
-    navigationController?.title = "fsdfs"
     self.view.backgroundColor = .secondarySystemBackground
+    setupNavigationController()
     setupTableView()
     
     viewModel.$viewModels
@@ -51,6 +49,17 @@ final class WeatherDetailsViewController: UIViewController {
     Task {
       await viewModel.fetchWeatherDetails()
     }
+  }
+  
+  private func setupNavigationController() {
+    self.navigationItem.title = "Weather details"
+    navigationController?.navigationBar.prefersLargeTitles = true
+    let searchItem = UIBarButtonItem(
+      barButtonSystemItem: .search,
+      target: self,
+      action: #selector(showCitySearchViewController)
+    )
+    navigationItem.rightBarButtonItems = [searchItem]
   }
   
   private func setupTableView() {
@@ -64,28 +73,15 @@ final class WeatherDetailsViewController: UIViewController {
     tableView.reloadData()
   }
   
-//  private func setupCountriesList() {
-//    let rootView = WeatherForecastListView(viewModel: WeatherForecastListViewModel(locationCoordinates: locationCoordinates))
-//    
-//    let countriesListViewController = UIHostingController(rootView: rootView)
-//    let countriesListView = countriesListViewController.view
-//    guard let countriesListView else {
-//      return
-//    }
-//    countriesListView.translatesAutoresizingMaskIntoConstraints = false
-//
-//    addChild(countriesListViewController)
-//    view.addSubview(countriesListView)
-//
-//    NSLayoutConstraint.activate([
-//      countriesListView.topAnchor.constraint(equalTo: view.topAnchor),
-//      countriesListView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//      countriesListView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//      countriesListView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//    ])
-//
-//    countriesListViewController.didMove(toParent: self)
-//  }
+  @objc private func showCitySearchViewController() {
+    let viewController = CitiesSearchViewController(showType: .citySearch)
+    viewController.coordinatesUpdateHandler = { [weak self] coordinates in
+      Task {
+        await self?.viewModel.update(locationCoordinates: coordinates)
+      }
+    }
+    navigationController?.present(viewController, animated: true)
+  }
 }
 
 extension WeatherDetailsViewController: UITableViewDataSource {

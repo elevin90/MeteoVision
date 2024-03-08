@@ -11,9 +11,9 @@ import CoreLocation
 import Combine
 
 final class WeatherDetailsViewModel {
-  private let locationCoordinates: CLLocationCoordinate2D
+  private var locationCoordinates: CLLocationCoordinate2D
   private let weatherProvider: WeatherProviding
-//  private(set) var currentWeatcher: CurrentWeather?
+  private var unitsProvider: WeatherUnitsProviding
   
   @Published var viewModels: [WeatherDetailViewModeling] = []
   private var weatherDetailsCityViewModel = WeatherDetailsCityCellViewModel()
@@ -21,21 +21,34 @@ final class WeatherDetailsViewModel {
   
   init(
     locationCoordinates: CLLocationCoordinate2D,
-    weatherSerivce: WeatherProviding = WeatherProvider()
+    weatherSerivce: WeatherProviding = WeatherProvider(),
+    unitsProvider: WeatherUnitsProviding
   ) {
     self.locationCoordinates = locationCoordinates
     self.weatherProvider = weatherSerivce
+    self.unitsProvider = unitsProvider
+
     self.viewModels = [
       weatherDetailsCityViewModel,
       weatherDetailsWindViewModel
     ]
+    
+    self.unitsProvider.newUnitUpdateHandler = { [weak self] selectedUnit in
+      guard let self else {
+        return
+      }
+      Task {
+        await self.fetchWeatherDetails()
+      }
+    }
   }
   
   func fetchWeatherDetails() async {
     do {
       let currentWeatcher = try await weatherProvider.getCurrentWeather(
         latitude: "\(locationCoordinates.latitude)",
-        longtitude: "\(locationCoordinates.longitude)"
+        longtitude: "\(locationCoordinates.longitude)", 
+        units: unitsProvider.getSelectedWeatherUnit().apiValue
       )
         viewModels = [
           WeatherDetailsCityCellViewModel(
@@ -46,12 +59,17 @@ final class WeatherDetailsViewModel {
             minimalTemperature: currentWeatcher.details.temperatureMin
           ),
           WeatherDetailsWindViewModel(windDetailsViewModels: [
-            .init(type: .windDegree, value: "\(Int(currentWeatcher.wind.degree.rounded()))"),
-            .init(type: .windSpeed, value: "\(Int( currentWeatcher.wind.speed.rounded()))")
+            .init(type: .windDegree, value: "\(Int(currentWeatcher.wind.degree.rounded()))°"),
+            .init(type: .windSpeed, value: "\(Int( currentWeatcher.wind.speed.rounded()))°")
           ])
         ]
     } catch {
-      
+      //TODO: Add erro handling here
     }
+  }
+  
+  func update(locationCoordinates: CLLocationCoordinate2D) async {
+    self.locationCoordinates = locationCoordinates
+    await fetchWeatherDetails()
   }
 }

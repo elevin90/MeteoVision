@@ -19,13 +19,16 @@ final class CitiesListViewModel: ObservableObject {
   private let countriesProvider: MVLocalCountriesProviding
   private var locationProvider: MVLocationProviding
   private var cancellables: Set<AnyCancellable> = []
+  private let showType: CitiesSearchShowType
   
   init(
     countriesProvider: MVLocalCountriesProviding = MVLocalCountriesProvider(),
-    locationProvider: MVLocationProviding = MVLocationProvider()
+    locationProvider: MVLocationProviding = MVLocationProvider(),
+    showType: CitiesSearchShowType
   ) {
     self.countriesProvider = countriesProvider
     self.locationProvider = locationProvider
+    self.showType = showType
     
     $searchQuery
       .debounce(for: .seconds(0.2), scheduler: RunLoop.current)
@@ -43,6 +46,18 @@ final class CitiesListViewModel: ObservableObject {
       }
       Task {
         await self.updateLocationCoordinates(from: coordinates)
+      }
+    }
+    
+    self.locationProvider.didChangeAuthorisationStatusHandler = { [weak self] status in
+      guard self?.showType == .firstLaunch else {
+        return
+      }
+      switch status {
+      case .authorizedAlways, .authorizedWhenInUse:
+        self?.requestLocation()
+      default:
+        break
       }
     }
   }
