@@ -12,7 +12,6 @@
 		CB62DCEC2B9AFD31000DFBDD /* VerticalTitleSubtitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62DCEB2B9AFD31000DFBDD /* VerticalTitleSubtitleViewModel.swift */; };
 		CB62DCEF2B9AFE76000DFBDD /* WeatherUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62DCEE2B9AFE76000DFBDD /* WeatherUnits.swift */; };
 		CB62DCF12B9AFF27000DFBDD /* WeatherUnitsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62DCF02B9AFF27000DFBDD /* WeatherUnitsProvider.swift */; };
-		CB62DCF32B9B005B000DFBDD /* DegreesPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62DCF22B9B005B000DFBDD /* DegreesPicker.swift */; };
 		CB62DCF52B9B018F000DFBDD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62DCF42B9B018F000DFBDD /* SettingsViewModel.swift */; };
 		CB62DCF72B9B01C7000DFBDD /* SettingsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62DCF62B9B01C7000DFBDD /* SettingsCellViewModel.swift */; };
 		CBB2C24B2B967B7E00642D91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C24A2B967B7E00642D91 /* AppDelegate.swift */; };
@@ -66,7 +65,6 @@
 		CB62DCEB2B9AFD31000DFBDD /* VerticalTitleSubtitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalTitleSubtitleViewModel.swift; sourceTree = "<group>"; };
 		CB62DCEE2B9AFE76000DFBDD /* WeatherUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUnits.swift; sourceTree = "<group>"; };
 		CB62DCF02B9AFF27000DFBDD /* WeatherUnitsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUnitsProvider.swift; sourceTree = "<group>"; };
-		CB62DCF22B9B005B000DFBDD /* DegreesPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesPicker.swift; sourceTree = "<group>"; };
 		CB62DCF42B9B018F000DFBDD /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		CB62DCF62B9B01C7000DFBDD /* SettingsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellViewModel.swift; sourceTree = "<group>"; };
 		CBB2C2472B967B7E00642D91 /* MeteoVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeteoVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,7 +133,6 @@
 				CB62DCE92B9AF12B000DFBDD /* SettingsViewController.swift */,
 				CB62DCF42B9B018F000DFBDD /* SettingsViewModel.swift */,
 				CB62DCF62B9B01C7000DFBDD /* SettingsCellViewModel.swift */,
-				CB62DCF22B9B005B000DFBDD /* DegreesPicker.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -424,7 +421,6 @@
 				CBEF356A2B9A2B0500B2C160 /* UIDevice+Extensions.swift in Sources */,
 				CB62DCF52B9B018F000DFBDD /* SettingsViewModel.swift in Sources */,
 				CBEF35532B9680B800B2C160 /* CitiesListViewModel.swift in Sources */,
-				CB62DCF32B9B005B000DFBDD /* DegreesPicker.swift in Sources */,
 				CB62DCE52B9AEE14000DFBDD /* TabBarController.swift in Sources */,
 				CBEF35722B9A33A200B2C160 /* UITableview+Extensions.swift in Sources */,
 				CB62DCF72B9B01C7000DFBDD /* SettingsCellViewModel.swift in Sources */,
