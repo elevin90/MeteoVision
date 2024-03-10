@@ -32,7 +32,7 @@ final class TabBarController: UITabBarController {
     )
   }()
   
-  private lazy var settingssScreen: UINavigationController = {
+  private lazy var settingsScreen: UINavigationController = {
     let screenInfo = ScreenInfo(
       title: "Settings",
       image: UIImage(systemName: "gear")
@@ -56,12 +56,13 @@ final class TabBarController: UITabBarController {
   }
   
   private func configure() {
-    viewControllers = [weatherScreen, settingssScreen] as [UIViewController]
+    viewControllers = [weatherScreen, settingsScreen] as [UIViewController]
     tabBar.scrollEdgeAppearance = tabBar.standardAppearance
   }
   
   private func customise(viewController: UIViewController, screenInfo: ScreenInfo) -> UINavigationController {
     viewController.tabBarItem.image = screenInfo.image
+    viewController.title = screenInfo.title
     let selectedImage = screenInfo.image?.withRenderingMode(.alwaysTemplate).withTintColor(.systemBlue)
     viewController.tabBarItem.selectedImage = selectedImage
     return UINavigationController(rootViewController: viewController)

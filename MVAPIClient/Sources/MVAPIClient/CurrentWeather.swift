@@ -26,7 +26,7 @@ public struct CurrentWeatherWind: Codable {
   }
 }
 
-public struct CurrentWeatherDetaisls: Codable {
+public struct CurrentWeatherDetails: Codable {
   public let temperature: Double
   public let feelsLike: Double
   public let temperatureMin: Double
@@ -72,7 +72,7 @@ public struct CurrentWeather: Codable {
   public let coordinates: Coordinates
   public let conditions: [WeatherConditions]
   public let wind: CurrentWeatherWind
-  public let details: CurrentWeatherDetaisls
+  public let details: CurrentWeatherDetails
   public let sunDetails: WeatherSunDetails
   public let city: String
   

@@ -7,11 +7,16 @@
 
 import UIKit
 
-struct WeatherDetailsWindViewModel: WeatherDetailViewModeling {
+final class WeatherDetailsWindViewModel: WeatherDetailViewModeling {
   let cellId = WeatherDetailsWindCell.defaultReuseIdentifier
   let windDetailsViewModels:  [VerticalTitleSubtitleViewModel]
+  let state: WeatherDetailsCellViewModelState
   
-  init(windDetailsViewModels: [VerticalTitleSubtitleViewModel] = []) {
+  init(
+    state: WeatherDetailsCellViewModelState = .loading,
+    windDetailsViewModels: [VerticalTitleSubtitleViewModel] = []
+  ) {
+    self.state = state
     self.windDetailsViewModels = windDetailsViewModels
   }
 }

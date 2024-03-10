@@ -18,6 +18,7 @@ final class WeatherDetailsViewModel {
   @Published var viewModels: [WeatherDetailViewModeling] = []
   private var weatherDetailsCityViewModel = WeatherDetailsCityCellViewModel()
   private var weatherDetailsWindViewModel = WeatherDetailsWindViewModel()
+  private var weatherDetailsAQIViewModel = WeatherDetailsAirQualityCellViewModel()
   
   init(
     locationCoordinates: CLLocationCoordinate2D,
@@ -50,21 +51,36 @@ final class WeatherDetailsViewModel {
         longtitude: "\(locationCoordinates.longitude)", 
         units: unitsProvider.getSelectedWeatherUnit().apiValue
       )
-        viewModels = [
+      weatherDetailsCityViewModel =
           WeatherDetailsCityCellViewModel(
+            state: .success,
             location: currentWeatcher.city,
             weatherConditions: currentWeatcher.conditions.first,
             temperature: currentWeatcher.details.temperature,
             maxTemperature: currentWeatcher.details.temperatureMax,
             minimalTemperature: currentWeatcher.details.temperatureMin
-          ),
-          WeatherDetailsWindViewModel(windDetailsViewModels: [
-            .init(type: .windDegree, value: "\(Int(currentWeatcher.wind.degree.rounded()))°"),
-            .init(type: .windSpeed, value: "\(Int( currentWeatcher.wind.speed.rounded()))°")
+          )
+      weatherDetailsWindViewModel = WeatherDetailsWindViewModel(windDetailsViewModels: [
+            .init(state: .success, type: .windDegree, value: "\(Int(currentWeatcher.wind.degree.rounded()))°"),
+            .init(state: .success, type: .windSpeed, value: "\(Int( currentWeatcher.wind.speed.rounded()))°")
           ])
-        ]
+      viewModels = [weatherDetailsCityViewModel, weatherDetailsWindViewModel, weatherDetailsAQIViewModel]
     } catch {
-      //TODO: Add erro handling here
+      viewModels = [
+        WeatherDetailsCityCellViewModel(state: .failure),
+        WeatherDetailsWindViewModel(windDetailsViewModels: [
+          .init(state: .failure, type: .windDegree),
+          .init(state: .failure, type: .windSpeed),
+        ]),
+        WeatherDetailsAirQualityCellViewModel(state: .failure)
+      ]
+    }
+    do {
+      let currentAirPollution = try await weatherProvider.getCurrentAirPollution(latitude: "\(locationCoordinates.latitude)", longtitude: "\(locationCoordinates.longitude)")
+      weatherDetailsAQIViewModel = WeatherDetailsAirQualityCellViewModel(index: currentAirPollution.airQualityIndex)
+      viewModels = [weatherDetailsCityViewModel, weatherDetailsWindViewModel, weatherDetailsAQIViewModel]
+    } catch {
+      print(String(describing: error))
     }
   }
   

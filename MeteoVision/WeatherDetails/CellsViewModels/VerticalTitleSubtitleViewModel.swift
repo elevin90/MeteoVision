@@ -16,10 +16,16 @@ struct VerticalTitleSubtitleViewModel {
   let iconName: String
   let value: String
   let description: String
+  let state: WeatherDetailsCellViewModelState
 }
 
 extension VerticalTitleSubtitleViewModel {
-  init(type: VerticalTitleSubtitleViewType, value: String) {
+  init(
+    state: WeatherDetailsCellViewModelState,
+    type: VerticalTitleSubtitleViewType,
+    value: String = ""
+  ) {
+    self.state = state
     switch type {
     case .windSpeed:
       self.description = "Wind speed"

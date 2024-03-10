@@ -8,10 +8,10 @@
 import Foundation
 
 protocol WeatherUnitsProviding {
+  var newUnitUpdateHandler: ((WeatherUnits) -> Void)? { get set }
   func getWeatherUnits() -> [WeatherUnits]
   func select(weatherUnit: WeatherUnits)
   func getSelectedWeatherUnit() -> WeatherUnits
-  var newUnitUpdateHandler: ((WeatherUnits) -> Void)? { get set }
 }
 
 final class WeatherUnitsProvider: WeatherUnitsProviding {

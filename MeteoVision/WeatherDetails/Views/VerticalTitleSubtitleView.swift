@@ -51,6 +51,12 @@ final class VerticalTitleSubtitleView: UIView {
     return stackView
   }()
   
+  private lazy var loadingDataView: LoadingDataView = {
+    let view = LoadingDataView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
   init(type: VerticalTitleSubtitleViewType) {
     self.type = type
     super.init(frame: .zero)
@@ -63,11 +69,21 @@ final class VerticalTitleSubtitleView: UIView {
       horisontalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -offset),
       horisontalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -offset)
     ])
-    addShadow()
     titleStackView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+    addSubview(loadingDataView)
+    NSLayoutConstraint.activate([
+      loadingDataView.topAnchor.constraint(equalTo: self.topAnchor, constant: offset),
+      loadingDataView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: offset),
+      loadingDataView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -offset),
+      loadingDataView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -offset)
+    ])
+    addShadow()
   }
   
   func update(with viewModel: VerticalTitleSubtitleViewModel) {
+    loadingDataView.update(with: viewModel.state)
+    loadingDataView.isHidden = viewModel.state == .success
+    horisontalStackView.isHidden = viewModel.state != .success
     imageView.image = UIImage.init(systemName: viewModel.iconName)
     valueLabel.text = viewModel.value
     descriptionleLabel.text = viewModel.description

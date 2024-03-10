@@ -7,7 +7,7 @@
 
 import MVAPIClient
 
-struct WeatherDetailsCityCellViewModel: WeatherDetailViewModeling {
+final class WeatherDetailsCityCellViewModel: WeatherDetailViewModeling {
   let cellId = "WeatherDetailsCityCell"
   let location: String?
   let weatherDescription: String?
@@ -15,6 +15,7 @@ struct WeatherDetailsCityCellViewModel: WeatherDetailViewModeling {
   let maxTemperature: String?
   let minimalTemperature: String?
   let statusCode: Int?
+  let state: WeatherDetailsCellViewModelState
   
   var weatherIconName: String? {
     guard let statusCode else {
@@ -32,12 +33,14 @@ struct WeatherDetailsCityCellViewModel: WeatherDetailViewModeling {
   }
   
   init(
+    state: WeatherDetailsCellViewModelState = .loading,
     location: String? = nil,
     weatherConditions: WeatherConditions? = nil,
     temperature: Double? = nil,
     maxTemperature: Double? = nil,
     minimalTemperature: Double? = nil
   ) {
+    self.state = state
     self.location = location
     self.temperature =  temperature.map { "\(Int($0.rounded()))°" }
     self.maxTemperature = maxTemperature.map { "\(Int($0.rounded()))°" }

@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum WeatherDetailsCellViewModelState: Equatable {
+  case loading
+  case success
+  case failure
+}
+
 protocol WeatherDetailViewModeling {
   var cellId: String { get }
 }
@@ -126,6 +132,8 @@ final class WeatherDetailsCityCell: BaseTableViewCell, WeatherDetailCellUpdating
     return contentVew
   }()
   
+  private lazy var loadingDataView = LoadingDataView()
+  
   private let offset = Constants.sideOffset
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -142,12 +150,23 @@ final class WeatherDetailsCityCell: BaseTableViewCell, WeatherDetailCellUpdating
     makeClearBackground()
     setupRoundedContentView()
     setupStackView()
+    roundedContentView.addSubview(loadingDataView)
+    NSLayoutConstraint.activate([
+      loadingDataView.leadingAnchor.constraint(equalTo: roundedContentView.leadingAnchor),
+      loadingDataView.trailingAnchor.constraint(equalTo: roundedContentView.trailingAnchor),
+      loadingDataView.centerYAnchor.constraint(equalTo: roundedContentView.centerYAnchor)
+    ])
+    loadingDataView.isHidden = true
   }
   
   func update(with viewModel: WeatherDetailViewModeling) {
     guard let viewModel = viewModel as? WeatherDetailsCityCellViewModel else {
       return
     }
+    [locationImageView, weatherImageView, upArrowImageView, downArrowImageView].forEach {
+      $0.isHidden = viewModel.state != .success
+    }
+    loadingDataView.update(with: viewModel.state)
     locationLabel.text = viewModel.location ?? ""
     descriptionLabel.text = viewModel.weatherDescription ?? ""
     degreesLabel.text = viewModel.temperature
@@ -156,6 +175,7 @@ final class WeatherDetailsCityCell: BaseTableViewCell, WeatherDetailCellUpdating
     }
     maxDegreesLabel.text = viewModel.maxTemperature ?? ""
     minDegreesLabel.text = viewModel.minimalTemperature  ?? ""
+    loadingDataView.isHidden = viewModel.state == .success
   }
 }
 private extension WeatherDetailsCityCell {

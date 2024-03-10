@@ -20,6 +20,7 @@ final class WeatherDetailsViewController: UIViewController {
     tableView.showsVerticalScrollIndicator = false
     tableView.register(WeatherDetailsCityCell.self)
     tableView.register(WeatherDetailsWindCell.self)
+    tableView.register(WeatherDetailsAirQualityCell.self)
     tableView.backgroundColor = .clear
     tableView.separatorStyle = .none
     return tableView
@@ -85,17 +86,17 @@ final class WeatherDetailsViewController: UIViewController {
 }
 
 extension WeatherDetailsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      viewModel.viewModels.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cellViewModel = viewModel.viewModels[indexPath.row]
-      let cell = tableView.dequeueReusableCell(
-        withIdentifier: cellViewModel.cellId,
-        for: indexPath
-      )
-      (cell as? WeatherDetailCellUpdating)?.update(with: cellViewModel)
-      return cell
-    }
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    viewModel.viewModels.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cellViewModel = viewModel.viewModels[indexPath.row]
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: cellViewModel.cellId,
+      for: indexPath
+    )
+    (cell as? WeatherDetailCellUpdating)?.update(with: cellViewModel)
+    return cell
+  }
 }
