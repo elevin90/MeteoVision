@@ -7,13 +7,9 @@
 
 import Foundation
 
-enum WeatherUnits: Int, CaseIterable {
-  case system
-  case standard
-  case metric
-  
-  var title: String {
-    switch self {
+struct WeatherUnitTitles {
+  static func appTitle(for unit: WeatherUnits) -> String {
+    switch unit {
     case .system:
       "Default sustem units"
     case .standard:
@@ -23,10 +19,9 @@ enum WeatherUnits: Int, CaseIterable {
     }
   }
   
-  var apiValue: String {
-    switch self {
+  static func apiTitle(for unit: WeatherUnits, locale: NSLocale = NSLocale.current as NSLocale) -> String {
+    switch unit {
     case .system:
-      let locale = NSLocale.current as NSLocale
       let unitValue = locale.object(forKey: NSLocale.Key(rawValue: "kCFLocaleTemperatureUnitKey")) as? String
       return unitValue ?? "standard"
     case .standard:
@@ -35,4 +30,10 @@ enum WeatherUnits: Int, CaseIterable {
       return "metric"
     }
   }
+}
+
+enum WeatherUnits: Int, CaseIterable {
+  case system
+  case standard
+  case metric
 }

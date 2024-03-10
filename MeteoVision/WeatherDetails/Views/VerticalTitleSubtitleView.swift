@@ -78,6 +78,7 @@ final class VerticalTitleSubtitleView: UIView {
       loadingDataView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -offset)
     ])
     addShadow()
+    loadingDataView.update(with: .loading)
   }
   
   func update(with viewModel: VerticalTitleSubtitleViewModel) {

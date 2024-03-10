@@ -26,6 +26,15 @@ public struct CurrentWeatherWind: Codable {
   }
 }
 
+public struct CurrentWeatherClouds: Codable {
+  public let all: Double
+  
+  enum CodingKeys: String, CodingKey {
+    case all
+  }
+}
+
+
 public struct CurrentWeatherDetails: Codable {
   public let temperature: Double
   public let feelsLike: Double
@@ -42,6 +51,10 @@ public struct CurrentWeatherDetails: Codable {
     case pressure
     case humidity
   }
+  
+  public static var preview: Self {
+    .init(temperature: 11, feelsLike: 12, temperatureMin: 10, temperatureMax: 13, pressure: 1, humidity: 1)
+  }
 }
 
 public struct WeatherConditions: Codable {
@@ -55,6 +68,10 @@ public struct WeatherConditions: Codable {
     case condition = "main"
     case description
     case iconPath = "icon"
+  }
+  
+  public static var preview: Self {
+    .init(id: 1, condition: "Sunny", description: "Sunny", iconPath: "")
   }
 }
 
@@ -75,6 +92,7 @@ public struct CurrentWeather: Codable {
   public let details: CurrentWeatherDetails
   public let sunDetails: WeatherSunDetails
   public let city: String
+  public let clouds: CurrentWeatherClouds
   
   enum CodingKeys: String, CodingKey {
     case coordinates = "coord"
@@ -83,6 +101,11 @@ public struct CurrentWeather: Codable {
     case sunDetails = "sys"
     case city = "name"
     case wind = "wind"
+    case clouds
+  }
+  
+  public static var preview: Self {
+    .init(coordinates: Coordinates(longtitude: 10, latitude: 11), conditions: [WeatherConditions.preview], wind: CurrentWeatherWind(speed: 11, degree: 2.0), details: CurrentWeatherDetails.preview, sunDetails: WeatherSunDetails(sunrise: 11, sunset: 12), city: "Baranovichi", clouds: .init(all: 12))
   }
 }
 

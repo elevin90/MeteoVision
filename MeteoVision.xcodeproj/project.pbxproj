@@ -15,6 +15,12 @@
 		CB62DCF12B9AFF27000DFBDD /* WeatherUnitsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62DCF02B9AFF27000DFBDD /* WeatherUnitsProvider.swift */; };
 		CB62DCF52B9B018F000DFBDD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62DCF42B9B018F000DFBDD /* SettingsViewModel.swift */; };
 		CB62DCF72B9B01C7000DFBDD /* SettingsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62DCF62B9B01C7000DFBDD /* SettingsCellViewModel.swift */; };
+		CB774CEA2B9E116B0060627B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CE92B9E116B0060627B /* Router.swift */; };
+		CB774CEC2B9E23290060627B /* WeatherUnitsProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CEB2B9E23290060627B /* WeatherUnitsProviderTests.swift */; };
+		CB774CF02B9E43FE0060627B /* WeatherDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CEF2B9E43FE0060627B /* WeatherDetailsViewModelTests.swift */; };
+		CB774CF22B9E544F0060627B /* CitiesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CF12B9E544F0060627B /* CitiesListViewModelTests.swift */; };
+		CB774CF42B9E59AF0060627B /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CF32B9E59AF0060627B /* RouterTests.swift */; };
+		CB774CF62B9E70260060627B /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CF52B9E70260060627B /* EmptyDataView.swift */; };
 		CBA95F4A2B9D02530099AEE2 /* WeatherDetailsAirQualityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA95F492B9D02530099AEE2 /* WeatherDetailsAirQualityCell.swift */; };
 		CBA95F4C2B9D07C30099AEE2 /* AirQualityIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA95F4B2B9D07C30099AEE2 /* AirQualityIndexView.swift */; };
 		CBA95F4E2B9D10880099AEE2 /* AirQualityIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA95F4D2B9D10880099AEE2 /* AirQualityIndexViewModel.swift */; };
@@ -24,7 +30,7 @@
 		CBB2C24F2B967B7E00642D91 /* CitiesSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C24E2B967B7E00642D91 /* CitiesSearchViewController.swift */; };
 		CBB2C2542B967B7F00642D91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB2C2532B967B7F00642D91 /* Assets.xcassets */; };
 		CBB2C2572B967B7F00642D91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB2C2552B967B7F00642D91 /* LaunchScreen.storyboard */; };
-		CBB2C2622B967B7F00642D91 /* MeteoVisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C2612B967B7F00642D91 /* MeteoVisionTests.swift */; };
+		CBB2C2622B967B7F00642D91 /* WeatherUnitsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C2612B967B7F00642D91 /* WeatherUnitsTests.swift */; };
 		CBB2C26C2B967B7F00642D91 /* MeteoVisionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C26B2B967B7F00642D91 /* MeteoVisionUITests.swift */; };
 		CBB2C26E2B967B7F00642D91 /* MeteoVisionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C26D2B967B7F00642D91 /* MeteoVisionUITestsLaunchTests.swift */; };
 		CBBC445E2B9A55340066D91A /* WeatherDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBC445D2B9A55340066D91A /* WeatherDetailsViewModel.swift */; };
@@ -73,6 +79,12 @@
 		CB62DCF02B9AFF27000DFBDD /* WeatherUnitsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUnitsProvider.swift; sourceTree = "<group>"; };
 		CB62DCF42B9B018F000DFBDD /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		CB62DCF62B9B01C7000DFBDD /* SettingsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellViewModel.swift; sourceTree = "<group>"; };
+		CB774CE92B9E116B0060627B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		CB774CEB2B9E23290060627B /* WeatherUnitsProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUnitsProviderTests.swift; sourceTree = "<group>"; };
+		CB774CEF2B9E43FE0060627B /* WeatherDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		CB774CF12B9E544F0060627B /* CitiesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListViewModelTests.swift; sourceTree = "<group>"; };
+		CB774CF32B9E59AF0060627B /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
+		CB774CF52B9E70260060627B /* EmptyDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
 		CBA95F492B9D02530099AEE2 /* WeatherDetailsAirQualityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsAirQualityCell.swift; sourceTree = "<group>"; };
 		CBA95F4B2B9D07C30099AEE2 /* AirQualityIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityIndexView.swift; sourceTree = "<group>"; };
 		CBA95F4D2B9D10880099AEE2 /* AirQualityIndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityIndexViewModel.swift; sourceTree = "<group>"; };
@@ -85,7 +97,7 @@
 		CBB2C2562B967B7F00642D91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBB2C2582B967B7F00642D91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBB2C25D2B967B7F00642D91 /* MeteoVisionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeteoVisionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBB2C2612B967B7F00642D91 /* MeteoVisionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoVisionTests.swift; sourceTree = "<group>"; };
+		CBB2C2612B967B7F00642D91 /* WeatherUnitsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUnitsTests.swift; sourceTree = "<group>"; };
 		CBB2C2672B967B7F00642D91 /* MeteoVisionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeteoVisionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB2C26B2B967B7F00642D91 /* MeteoVisionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoVisionUITests.swift; sourceTree = "<group>"; };
 		CBB2C26D2B967B7F00642D91 /* MeteoVisionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoVisionUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -158,6 +170,19 @@
 			path = CellsViewModels;
 			sourceTree = "<group>";
 		};
+		CBA95F532B9DAEBC0099AEE2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CBEF356D2B9A2EB800B2C160 /* BaseTableViewCell.swift */,
+				CB62DCE42B9AEE14000DFBDD /* TabBarController.swift */,
+				CB62DCEE2B9AFE76000DFBDD /* WeatherUnits.swift */,
+				CB62DCF02B9AFF27000DFBDD /* WeatherUnitsProvider.swift */,
+				CB4A95742B9CD4E500B154D1 /* LoadingDataView.swift */,
+				CB774CE92B9E116B0060627B /* Router.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		CBB2C23E2B967B7E00642D91 = {
 			isa = PBXGroup;
 			children = (
@@ -187,11 +212,7 @@
 			children = (
 				CBB2C24A2B967B7E00642D91 /* AppDelegate.swift */,
 				CBB2C24C2B967B7E00642D91 /* SceneDelegate.swift */,
-				CBEF356D2B9A2EB800B2C160 /* BaseTableViewCell.swift */,
-				CB62DCE42B9AEE14000DFBDD /* TabBarController.swift */,
-				CB62DCEE2B9AFE76000DFBDD /* WeatherUnits.swift */,
-				CB62DCF02B9AFF27000DFBDD /* WeatherUnitsProvider.swift */,
-				CB4A95742B9CD4E500B154D1 /* LoadingDataView.swift */,
+				CBA95F532B9DAEBC0099AEE2 /* Common */,
 				CBEF35582B98EFC400B2C160 /* WeatherDetails */,
 				CB62DCE82B9AF11E000DFBDD /* Settings */,
 				CBEF354B2B96806600B2C160 /* CitiesList */,
@@ -206,7 +227,11 @@
 		CBB2C2602B967B7F00642D91 /* MeteoVisionTests */ = {
 			isa = PBXGroup;
 			children = (
-				CBB2C2612B967B7F00642D91 /* MeteoVisionTests.swift */,
+				CBB2C2612B967B7F00642D91 /* WeatherUnitsTests.swift */,
+				CB774CEB2B9E23290060627B /* WeatherUnitsProviderTests.swift */,
+				CB774CEF2B9E43FE0060627B /* WeatherDetailsViewModelTests.swift */,
+				CB774CF12B9E544F0060627B /* CitiesListViewModelTests.swift */,
+				CB774CF32B9E59AF0060627B /* RouterTests.swift */,
 			);
 			path = MeteoVisionTests;
 			sourceTree = "<group>";
@@ -285,6 +310,7 @@
 				CBA95F492B9D02530099AEE2 /* WeatherDetailsAirQualityCell.swift */,
 				CBA95F4B2B9D07C30099AEE2 /* AirQualityIndexView.swift */,
 				CBED7CCD2B9A64A2008F5FA1 /* VerticalTitleSubtitleView.swift */,
+				CB774CF52B9E70260060627B /* EmptyDataView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -429,6 +455,7 @@
 				CBB2C24B2B967B7E00642D91 /* AppDelegate.swift in Sources */,
 				CB62DCEA2B9AF12B000DFBDD /* SettingsViewController.swift in Sources */,
 				CBA95F4C2B9D07C30099AEE2 /* AirQualityIndexView.swift in Sources */,
+				CB774CEA2B9E116B0060627B /* Router.swift in Sources */,
 				CBEF354D2B96807700B2C160 /* CitiesListView.swift in Sources */,
 				CBEF354A2B967FEA00B2C160 /* UIApplication+Extensions.swift in Sources */,
 				CBA95F4E2B9D10880099AEE2 /* AirQualityIndexViewModel.swift in Sources */,
@@ -441,6 +468,7 @@
 				CB62DCE52B9AEE14000DFBDD /* TabBarController.swift in Sources */,
 				CBEF35722B9A33A200B2C160 /* UITableview+Extensions.swift in Sources */,
 				CB62DCF72B9B01C7000DFBDD /* SettingsCellViewModel.swift in Sources */,
+				CB774CF62B9E70260060627B /* EmptyDataView.swift in Sources */,
 				CBA95F4A2B9D02530099AEE2 /* WeatherDetailsAirQualityCell.swift in Sources */,
 				CBEF35512B9680A500B2C160 /* CitiesListTipView.swift in Sources */,
 				CBED7CCE2B9A64A2008F5FA1 /* VerticalTitleSubtitleView.swift in Sources */,
@@ -461,7 +489,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBB2C2622B967B7F00642D91 /* MeteoVisionTests.swift in Sources */,
+				CB774CF42B9E59AF0060627B /* RouterTests.swift in Sources */,
+				CBB2C2622B967B7F00642D91 /* WeatherUnitsTests.swift in Sources */,
+				CB774CF22B9E544F0060627B /* CitiesListViewModelTests.swift in Sources */,
+				CB774CEC2B9E23290060627B /* WeatherUnitsProviderTests.swift in Sources */,
+				CB774CF02B9E43FE0060627B /* WeatherDetailsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,7 +585,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -610,7 +642,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -687,7 +719,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6AABQB8S42;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eughenylevin.MeteoVisionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -695,6 +727,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeteoVision.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MeteoVision";
+				TVOS_DEPLOYMENT_TARGET = 17.0;
 			};
 			name = Debug;
 		};
@@ -707,7 +740,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6AABQB8S42;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eughenylevin.MeteoVisionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -715,6 +748,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeteoVision.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MeteoVision";
+				TVOS_DEPLOYMENT_TARGET = 17.0;
 			};
 			name = Release;
 		};

@@ -5,35 +5,44 @@
 //  Created by YAUHENI LEVIN on 7.03.24.
 //
 
-import Foundation
 import MVAPIClient
 import CoreLocation
 import Combine
+import Network
+
+protocol NetworkMonitoring {
+  func start(queue: DispatchQueue)
+  var currentPath: NWPath { get }
+  var pathUpdateHandler: (@Sendable(_ newPath: NWPath) -> Void)? { get set }
+}
+
+extension NWPathMonitor: NetworkMonitoring {}
 
 final class WeatherDetailsViewModel {
-  private var locationCoordinates: CLLocationCoordinate2D
-  private let weatherProvider: WeatherProviding
+  @Published private(set) var viewModels: [WeatherDetailViewModeling] = []
+  @Published private(set) var networkStatus: NWPath.Status?
+
+  private var locationCoordinates: CLLocationCoordinate2D?
   private var unitsProvider: WeatherUnitsProviding
+  private var networkMonitor: NetworkMonitoring
   
-  @Published var viewModels: [WeatherDetailViewModeling] = []
   private var weatherDetailsCityViewModel = WeatherDetailsCityCellViewModel()
   private var weatherDetailsWindViewModel = WeatherDetailsWindViewModel()
   private var weatherDetailsAQIViewModel = WeatherDetailsAirQualityCellViewModel()
   
+  private let weatherProvider: WeatherProviding
+  private let refreshDataInterva: TimeInterval = 10.0
+  private(set) var lastFetchTimestamp = Date()
+
   init(
-    locationCoordinates: CLLocationCoordinate2D,
     weatherSerivce: WeatherProviding = WeatherProvider(),
-    unitsProvider: WeatherUnitsProviding
+    unitsProvider: WeatherUnitsProviding,
+    networkMonitor: NetworkMonitoring = NWPathMonitor()
   ) {
-    self.locationCoordinates = locationCoordinates
     self.weatherProvider = weatherSerivce
     self.unitsProvider = unitsProvider
+    self.networkMonitor = networkMonitor
 
-    self.viewModels = [
-      weatherDetailsCityViewModel,
-      weatherDetailsWindViewModel
-    ]
-    
     self.unitsProvider.newUnitUpdateHandler = { [weak self] selectedUnit in
       guard let self else {
         return
@@ -42,45 +51,123 @@ final class WeatherDetailsViewModel {
         await self.fetchWeatherDetails()
       }
     }
+    
+    viewModels = []
+
+    setupNetworkMonitoring()
   }
   
-  func fetchWeatherDetails() async {
-    do {
-      let currentWeatcher = try await weatherProvider.getCurrentWeather(
-        latitude: "\(locationCoordinates.latitude)",
-        longtitude: "\(locationCoordinates.longitude)", 
-        units: unitsProvider.getSelectedWeatherUnit().apiValue
-      )
-      weatherDetailsCityViewModel =
-          WeatherDetailsCityCellViewModel(
-            state: .success,
-            location: currentWeatcher.city,
-            weatherConditions: currentWeatcher.conditions.first,
-            temperature: currentWeatcher.details.temperature,
-            maxTemperature: currentWeatcher.details.temperatureMax,
-            minimalTemperature: currentWeatcher.details.temperatureMin
-          )
-      weatherDetailsWindViewModel = WeatherDetailsWindViewModel(windDetailsViewModels: [
-            .init(state: .success, type: .windDegree, value: "\(Int(currentWeatcher.wind.degree.rounded()))°"),
-            .init(state: .success, type: .windSpeed, value: "\(Int( currentWeatcher.wind.speed.rounded()))°")
-          ])
-      viewModels = [weatherDetailsCityViewModel, weatherDetailsWindViewModel, weatherDetailsAQIViewModel]
-    } catch {
-      viewModels = [
-        WeatherDetailsCityCellViewModel(state: .failure),
-        WeatherDetailsWindViewModel(windDetailsViewModels: [
-          .init(state: .failure, type: .windDegree),
-          .init(state: .failure, type: .windSpeed),
-        ]),
-        WeatherDetailsAirQualityCellViewModel(state: .failure)
-      ]
+  func setupNetworkMonitoring() {
+    self.networkMonitor.pathUpdateHandler = { [weak self] path in
+      guard self?.networkStatus != path.status else {
+        return
+      }
+      self?.networkStatus = path.status
     }
+    networkMonitor.start(queue: DispatchQueue(label: "NetworkMonitor queue"))
+  }
+
+  func fetchWeatherDetails() async {
+    guard let locationCoordinates else {
+      return
+    }
+    let latitude = "\(locationCoordinates.latitude)"
+    let longtitude = "\(locationCoordinates.longitude)"
+    
+    self.updateViewModelBeforeDataFetch()
+   
     do {
-      let currentAirPollution = try await weatherProvider.getCurrentAirPollution(latitude: "\(locationCoordinates.latitude)", longtitude: "\(locationCoordinates.longitude)")
-      weatherDetailsAQIViewModel = WeatherDetailsAirQualityCellViewModel(index: currentAirPollution.airQualityIndex)
-      viewModels = [weatherDetailsCityViewModel, weatherDetailsWindViewModel, weatherDetailsAQIViewModel]
+      async let fetchCurrentWeather = weatherProvider.getCurrentWeather(
+        latitude: latitude,
+        longtitude: longtitude,
+        units: WeatherUnitTitles.apiTitle(for: unitsProvider.getSelectedWeatherUnit())
+      )
+      async let fetchCurrentAirPollution = weatherProvider.getCurrentAirPollution(
+        latitude: latitude,
+        longtitude: longtitude
+      )
+      let (weather, airPollution) = await (try? fetchCurrentWeather, try? fetchCurrentAirPollution)
+      updateWeatherViewModels(from: weather)
+      updateAirQualityViewModel(from: airPollution)
+  
+      viewModels = [
+        weatherDetailsCityViewModel,
+        weatherDetailsWindViewModel,
+        weatherDetailsAQIViewModel
+      ]
     } catch {
-      print(String(describing: error))
+      guard let error = error as? WeatherProviderError else {
+        return
+      }
+      switch error {
+      case .airQuality:
+        viewModels = [
+          WeatherDetailsCityCellViewModel(state: .failure),
+          WeatherDetailsWindViewModel(windDetailsViewModels: [
+            .init(state: .failure, type: .cloudness),
+            .init(state: .failure, type: .windSpeed),
+          ]),
+          WeatherDetailsAirQualityCellViewModel(state: .failure)
+        ]
+      case .weather:
+        viewModels = [
+          WeatherDetailsCityCellViewModel(state: .failure),
+          WeatherDetailsWindViewModel(windDetailsViewModels: [
+            .init(state: .failure, type: .cloudness),
+            .init(state: .failure, type: .windSpeed),
+          ]),
+          weatherDetailsAQIViewModel
+        ]
+      }
+    }
+  }
+  
+  func fetchToRefresh() {
+    guard Date().timeIntervalSince(lastFetchTimestamp) >= refreshDataInterva else {
+      return
+    }
+    Task {
+      await fetchWeatherDetails()
+      lastFetchTimestamp = Date()
+    }
+  }
+  
+  private func updateViewModelBeforeDataFetch() {
+    weatherDetailsCityViewModel = WeatherDetailsCityCellViewModel(state: .loading)
+    weatherDetailsWindViewModel = WeatherDetailsWindViewModel(state: .loading)
+    weatherDetailsAQIViewModel = WeatherDetailsAirQualityCellViewModel(state: .loading)
+    viewModels = [
+      weatherDetailsCityViewModel,
+      weatherDetailsWindViewModel,
+      weatherDetailsAQIViewModel
+    ]
+  }
+  
+  private func updateWeatherViewModels(from weather: CurrentWeather?) {
+    if let weather {
+      weatherDetailsCityViewModel = WeatherDetailsCityCellViewModel(
+        state: .success,
+        location: weather.city,
+        weatherConditions: weather.conditions.first,
+        temperature: weather.details.temperature,
+        maxTemperature: weather.details.temperatureMax,
+        minimalTemperature: weather.details.temperatureMin
+      )
+      weatherDetailsWindViewModel = WeatherDetailsWindViewModel(windDetailsViewModels: [
+        .init(state: .success, type: .cloudness, value: "\(Int(weather.clouds.all.rounded()))%"),
+        .init(state: .success, type: .windSpeed, value: "\(Int(weather.wind.speed.rounded()))m/s")
+      ])
+    } else {
+      weatherDetailsCityViewModel = WeatherDetailsCityCellViewModel(state: .failure)
+      weatherDetailsWindViewModel = WeatherDetailsWindViewModel(state: .failure)
+    }
+  }
+  
+  private func updateAirQualityViewModel(from airPollution: AirPolution?) {
+    if let airPollution{
+      weatherDetailsAQIViewModel = WeatherDetailsAirQualityCellViewModel(state: .success, index: airPollution.airQualityIndex)
+    } else {
+      weatherDetailsAQIViewModel = WeatherDetailsAirQualityCellViewModel(state: .failure)
     }
   }
   

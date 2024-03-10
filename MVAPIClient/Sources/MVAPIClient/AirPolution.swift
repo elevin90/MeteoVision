@@ -13,6 +13,10 @@ public struct AirPolution: Codable {
   enum CodingKeys: String, CodingKey {
     case airQualityIndex = "aqi"
   }
+  
+  public static var preview: Self {
+    .init(airQualityIndex: 1)
+  }
 }
 
 struct AirQualityList: Codable {

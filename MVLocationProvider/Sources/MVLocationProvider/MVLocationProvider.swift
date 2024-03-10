@@ -12,14 +12,26 @@ public protocol MVLocationProviding {
   func geocode(adress: String) async throws -> CLLocationCoordinate2D
 }
 
+public protocol LocationManaging {
+  var delegate: CLLocationManagerDelegate? { get set }
+  var desiredAccuracy: CLLocationAccuracy { get set }
+  var distanceFilter: CLLocationDistance { get set }
+  var allowsBackgroundLocationUpdates: Bool { get set }
+  func requestLocation()
+}
+
+extension CLLocationManager: LocationManaging { }
+
 public final class MVLocationProvider: NSObject, MVLocationProviding {
-  private let locationManager = CLLocationManager()
+  private var locationManager: LocationManaging
   private let geocoder = CLGeocoder()
   public var didUpdateLocationCoordinatesHandler: ((CLLocationCoordinate2D) -> Void)?
   public var didChangeAuthorisationStatusHandler: ((CLAuthorizationStatus) -> Void)?
+  private var failHandler: ((Error) -> Void)?
   private var authStatus = CLAuthorizationStatus.notDetermined
   
-  public override init() {
+  public init(locationManager: LocationManaging = CLLocationManager()) {
+    self.locationManager = locationManager
     super.init()
     setupLocationManager()
   }
@@ -48,7 +60,9 @@ extension MVLocationProvider: CLLocationManagerDelegate {
     didUpdateLocationCoordinatesHandler?(location.coordinate)
   }
   
-  public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) { }
+  public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    failHandler?(error)
+  }
 }
 
 extension MVLocationProvider {

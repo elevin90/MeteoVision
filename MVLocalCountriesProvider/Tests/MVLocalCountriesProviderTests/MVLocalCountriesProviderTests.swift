@@ -2,11 +2,17 @@ import XCTest
 @testable import MVLocalCountriesProvider
 
 final class MVLocalCountriesProviderTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
-
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
-    }
+  func testFetchCities() {
+    let countriesProvider = MVLocalCountriesProvider()
+    let cities = countriesProvider.fetchCities(with: "New York")
+  
+    XCTAssertTrue(cities.contains("New York, United States"), "Expected city 'New York, United States'")
+  }
+  
+  func testFetchCitiesCaseInsensitive() {
+    let countriesProvider = MVLocalCountriesProvider()
+    let cities = countriesProvider.fetchCities(with: "loS anGeLeS")
+    // Assert
+    XCTAssertTrue(cities.contains("Los Angeles, United States"))
+  }
 }

@@ -11,20 +11,12 @@ import TipKit
 import Combine
 import CoreLocation
 
-enum CitiesSearchShowType {
-  case firstLaunch
-  case citySearch
-}
-
 final class CitiesSearchViewController: UIViewController {
-  private let citiesListViewModel: CitiesListViewModel
+  private let viewModel: CitiesListViewModel
   private var cancellables: Set<AnyCancellable> = []
-  private let showType: CitiesSearchShowType
-  var coordinatesUpdateHandler: ((CLLocationCoordinate2D) -> Void)?
   
-  init(showType: CitiesSearchShowType) {
-    self.showType = showType
-    self.citiesListViewModel = CitiesListViewModel(showType: showType)
+  init(viewModel: CitiesListViewModel) {
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -35,31 +27,20 @@ final class CitiesSearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    citiesListViewModel.$locationCoordinates
+    viewModel.$locationCoordinates
       .receive(on: DispatchQueue.main)
       .sink { [weak self] coordinates in
-        guard let self, let coordinates else {
+        guard let coordinates else {
           return
         }
-        switch self.showType {
-        case .firstLaunch:
-          Task {
-            await UIApplication.shared.windows.first?
-              .setRootViewController(TabBarController(locationCoordinates: coordinates),
-                                     animated: true
-              )
-          }
-        case .citySearch:
-          self.coordinatesUpdateHandler?(coordinates)
-          self.dismiss(animated: true)
-        }
+        self?.dismiss(animated: true)
       }
       .store(in: &cancellables)
     setupCountriesList()
   }
 
   private func setupCountriesList() {
-    let rootView = CitiesListView(viewModel: citiesListViewModel).task {
+    let rootView = CitiesListView(viewModel: viewModel).task {
       try? Tips.configure([
         .displayFrequency(.immediate),
         .datastoreLocation(.applicationDefault)

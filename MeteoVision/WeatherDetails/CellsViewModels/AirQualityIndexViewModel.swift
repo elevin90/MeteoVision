@@ -13,11 +13,12 @@ struct AirQualityIndexViewModel {
   
   init?(index: Int) {
     self.index = "\(index)"
+    let alpha = 0.3
     color = switch index {
-    case 1: UIColor.green
-    case 2, 3: UIColor.yellow
-    case 4: UIColor.orange
-    case 5: UIColor.red
+    case 1: UIColor.green.withAlphaComponent(alpha)
+    case 2, 3: UIColor.yellow.withAlphaComponent(alpha)
+    case 4: UIColor.orange.withAlphaComponent(alpha)
+    case 5: UIColor.red.withAlphaComponent(alpha)
     default: UIColor.clear
     }
   }

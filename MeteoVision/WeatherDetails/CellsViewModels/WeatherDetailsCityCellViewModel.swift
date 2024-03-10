@@ -7,7 +7,7 @@
 
 import MVAPIClient
 
-final class WeatherDetailsCityCellViewModel: WeatherDetailViewModeling {
+struct WeatherDetailsCityCellViewModel: WeatherDetailViewModeling {
   let cellId = "WeatherDetailsCityCell"
   let location: String?
   let weatherDescription: String?

@@ -15,6 +15,7 @@ enum WeatherDetailsCellViewModelState: Equatable {
 
 protocol WeatherDetailViewModeling {
   var cellId: String { get }
+  var state: WeatherDetailsCellViewModelState { get }
 }
 
 protocol WeatherDetailCellUpdating {
@@ -108,7 +109,7 @@ final class WeatherDetailsCityCell: BaseTableViewCell, WeatherDetailCellUpdating
   
   private lazy var degreesDetailsStackView: UIStackView = {
     let stackView = UIStackView(arrangedSubviews: [degreesLabel, weatherImageView, UIView(), upArrowImageView, maxDegreesLabel, downArrowImageView, minDegreesLabel])
-    stackView.spacing = Constants.innerOffset
+    stackView.spacing = 8
     stackView.alignment = .fill
     stackView.axis = .horizontal
     return stackView
@@ -150,13 +151,7 @@ final class WeatherDetailsCityCell: BaseTableViewCell, WeatherDetailCellUpdating
     makeClearBackground()
     setupRoundedContentView()
     setupStackView()
-    roundedContentView.addSubview(loadingDataView)
-    NSLayoutConstraint.activate([
-      loadingDataView.leadingAnchor.constraint(equalTo: roundedContentView.leadingAnchor),
-      loadingDataView.trailingAnchor.constraint(equalTo: roundedContentView.trailingAnchor),
-      loadingDataView.centerYAnchor.constraint(equalTo: roundedContentView.centerYAnchor)
-    ])
-    loadingDataView.isHidden = true
+    setupLoadingDataView()
   }
   
   func update(with viewModel: WeatherDetailViewModeling) {
@@ -178,6 +173,8 @@ final class WeatherDetailsCityCell: BaseTableViewCell, WeatherDetailCellUpdating
     loadingDataView.isHidden = viewModel.state == .success
   }
 }
+
+// MARK: Initial UI Setup
 private extension WeatherDetailsCityCell {
   private func setupRoundedContentView() {
     addSubview(roundedContentView)
@@ -200,8 +197,8 @@ private extension WeatherDetailsCityCell {
     ])
     
     NSLayoutConstraint.activate([
-      locationImageView.widthAnchor.constraint(equalToConstant: 24),
-      locationImageView.heightAnchor.constraint(equalToConstant: 24)
+      locationImageView.widthAnchor.constraint(equalToConstant: 30),
+      locationImageView.heightAnchor.constraint(equalToConstant: 30)
     ])
     
     NSLayoutConstraint.activate([
@@ -218,5 +215,15 @@ private extension WeatherDetailsCityCell {
       downArrowImageView.widthAnchor.constraint(equalToConstant: 12),
       downArrowImageView.heightAnchor.constraint(equalToConstant: 22)
     ])
+  }
+  
+  private func setupLoadingDataView() {
+    roundedContentView.addSubview(loadingDataView)
+    NSLayoutConstraint.activate([
+      loadingDataView.leadingAnchor.constraint(equalTo: roundedContentView.leadingAnchor),
+      loadingDataView.trailingAnchor.constraint(equalTo: roundedContentView.trailingAnchor),
+      loadingDataView.centerYAnchor.constraint(equalTo: roundedContentView.centerYAnchor)
+    ])
+    loadingDataView.isHidden = true
   }
 }

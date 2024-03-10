@@ -15,6 +15,12 @@ protocol WeatherUnitsProviding {
 }
 
 final class WeatherUnitsProvider: WeatherUnitsProviding {
+  private let userDefaults: UserDefaults
+  
+  init(userDefaults: UserDefaults = .standard) {
+    self.userDefaults = userDefaults
+  }
+  
   var newUnitUpdateHandler: ((WeatherUnits) -> Void)?
   
   func getWeatherUnits() -> [WeatherUnits] {
@@ -25,12 +31,12 @@ final class WeatherUnitsProvider: WeatherUnitsProviding {
     guard getSelectedWeatherUnit().rawValue != weatherUnit.rawValue else {
       return
     }
-    UserDefaults.standard.setValue(weatherUnit.rawValue, forKey: "WeatherUnits")
+    userDefaults.setValue(weatherUnit.rawValue, forKey: "WeatherUnits")
     newUnitUpdateHandler?(weatherUnit)
   }
   
   func getSelectedWeatherUnit() -> WeatherUnits {
-    let selectedUnit = UserDefaults.standard.integer(forKey: "WeatherUnits")
+    let selectedUnit = userDefaults.integer(forKey: "WeatherUnits")
     return WeatherUnits(rawValue: selectedUnit) ?? .system
   }
 }

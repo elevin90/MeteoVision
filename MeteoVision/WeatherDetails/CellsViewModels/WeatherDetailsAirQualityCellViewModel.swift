@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class WeatherDetailsAirQualityCellViewModel: WeatherDetailViewModeling {
+struct WeatherDetailsAirQualityCellViewModel: WeatherDetailViewModeling {
   let cellId = WeatherDetailsAirQualityCell.defaultReuseIdentifier
   let state: WeatherDetailsCellViewModelState
   let aqiViewModel: AirQualityIndexViewModel?

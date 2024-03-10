@@ -15,7 +15,10 @@ final class SettingsViewModel {
     self.weatherUnitsProvider = weatherUnitsProvider
     let selectedUnit = weatherUnitsProvider.getSelectedWeatherUnit()
     for unit in weatherUnitsProvider.getWeatherUnits() {
-      viewModels.append(SettingsCellViewModel(title: unit.title, isSelected: selectedUnit.rawValue == unit.rawValue))
+      viewModels.append(SettingsCellViewModel(
+        title: WeatherUnitTitles.appTitle(for: unit),
+        isSelected: selectedUnit.rawValue == unit.rawValue)
+      )
     }
   }
   

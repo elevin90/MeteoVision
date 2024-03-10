@@ -12,7 +12,7 @@ import CoreLocationUI
 struct CitiesListView: View {
   @StateObject private var viewModel: CitiesListViewModel
   private let tipView = CitiesListTipView()
-
+  
   init(viewModel: CitiesListViewModel) {
     self._viewModel = StateObject(wrappedValue: viewModel)
   }
@@ -81,5 +81,5 @@ struct CitiesListView: View {
 }
 
 #Preview {
-  CitiesListView(viewModel: CitiesListViewModel(showType: .citySearch))
+  CitiesListView(viewModel: CitiesListViewModel())
 }

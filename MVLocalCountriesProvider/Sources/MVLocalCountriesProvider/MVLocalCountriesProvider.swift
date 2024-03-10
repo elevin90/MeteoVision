@@ -22,10 +22,9 @@ public final class MVLocalCountriesProvider: MVLocalCountriesProviding {
       return
     }
     do {
-      let decodedCountries = try JSONDecoder().decode([MVLocalCountry].self, from: data)
-      self.countries = decodedCountries
+      self.countries = try JSONDecoder().decode([MVLocalCountry].self, from: data)
     } catch {
-      //TODO: Add erro handling here
+      self.countries  = []
     }
   }
   

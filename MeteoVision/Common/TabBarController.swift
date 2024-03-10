@@ -13,21 +13,18 @@ final class TabBarController: UITabBarController {
     let title: String
     let image: UIImage?
   }
-  private let gradientlayer = CAGradientLayer()
-  private let locationCoordinates: CLLocationCoordinate2D
-  private var unitsProvider: WeatherUnitsProviding = WeatherUnitsProvider()
+  
+  private let router: Routing
+  private var unitsProvider: WeatherUnitsProviding
   
   private lazy var weatherScreen: UINavigationController = {
     let screenInfo = ScreenInfo(
       title: "Weather",
       image: UIImage(systemName: "cloud.sun")
     )
-    let viewModel = WeatherDetailsViewModel(
-      locationCoordinates: locationCoordinates,
-      unitsProvider: unitsProvider
-    )
+    let viewModel = WeatherDetailsViewModel(unitsProvider: unitsProvider)
     return customise(
-      viewController: WeatherDetailsViewController(viewModel: viewModel),
+      viewController: WeatherDetailsViewController(viewModel: viewModel, router: router),
       screenInfo: screenInfo
     )
   }()
@@ -44,8 +41,12 @@ final class TabBarController: UITabBarController {
     )
   }()
   
-  init(locationCoordinates: CLLocationCoordinate2D) {
-    self.locationCoordinates = locationCoordinates
+  init(
+    router: Routing = Router(),
+    unitsProvider: WeatherUnitsProviding = WeatherUnitsProvider()
+  ) {
+    self.router = router
+    self.unitsProvider = unitsProvider
     super.init(nibName: nil, bundle: nil)
     configure()
   }

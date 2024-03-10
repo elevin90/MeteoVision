@@ -9,7 +9,7 @@ import Foundation
 
 enum VerticalTitleSubtitleViewType {
   case windSpeed
-  case windDegree
+  case cloudness
 }
 
 struct VerticalTitleSubtitleViewModel {
@@ -21,7 +21,7 @@ struct VerticalTitleSubtitleViewModel {
 
 extension VerticalTitleSubtitleViewModel {
   init(
-    state: WeatherDetailsCellViewModelState,
+    state: WeatherDetailsCellViewModelState = .loading,
     type: VerticalTitleSubtitleViewType,
     value: String = ""
   ) {
@@ -31,9 +31,9 @@ extension VerticalTitleSubtitleViewModel {
       self.description = "Wind speed"
       self.iconName = "wind"
       self.value = value
-    case .windDegree:
-      self.description = "Wind temperature"
-      self.iconName = "thermometer.sun"
+    case .cloudness:
+      self.description = "Cloudiness"
+      self.iconName = "cloud"
       self.value = value
     }
   }

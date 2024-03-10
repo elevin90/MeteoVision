@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SettingsCellViewModel: WeatherDetailViewModeling {
+final class SettingsCellViewModel {
   let title: String
   var isSelected: Bool
   let cellId = ""

@@ -10,6 +10,7 @@ import Combine
 
 final class WeatherDetailsViewController: UIViewController {
   private let viewModel: WeatherDetailsViewModel
+  private let router: Routing
   private var cancellables: Set<AnyCancellable> = []
   
   private lazy var tableView: UITableView = {
@@ -23,11 +24,16 @@ final class WeatherDetailsViewController: UIViewController {
     tableView.register(WeatherDetailsAirQualityCell.self)
     tableView.backgroundColor = .clear
     tableView.separatorStyle = .none
+    
+    let refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: #selector(refreshData), for: .primaryActionTriggered)
+    tableView.refreshControl = refreshControl
     return tableView
   }()
   
-  init(viewModel: WeatherDetailsViewModel) {
+  init(viewModel: WeatherDetailsViewModel, router: Routing) {
     self.viewModel = viewModel
+    self.router = router
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -41,11 +47,31 @@ final class WeatherDetailsViewController: UIViewController {
     self.view.backgroundColor = .secondarySystemBackground
     setupNavigationController()
     setupTableView()
+    setNeedsUpdateContentUnavailableConfiguration()
+    
+    viewModel.$networkStatus
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] status in
+        guard let status else {
+          return
+        }
+        switch status {
+        case .satisfied:
+          break
+        case .unsatisfied, .requiresConnection:
+          self?.router.showAlert(title: "Lost connection", message: "Please check the internet connection", buttonTitle: "OK", on: self, completion: nil)
+        @unknown default:
+          assertionFailure()
+          break
+        }
+      }.store(in: &cancellables)
     
     viewModel.$viewModels
       .receive(on: DispatchQueue.main)
       .sink { [weak self] _ in
+        self?.setNeedsUpdateContentUnavailableConfiguration()
         self?.tableView.reloadData()
+        self?.tableView.refreshControl?.endRefreshing()
       }.store(in: &cancellables)
     Task {
       await viewModel.fetchWeatherDetails()
@@ -74,14 +100,42 @@ final class WeatherDetailsViewController: UIViewController {
     tableView.reloadData()
   }
   
-  @objc private func showCitySearchViewController() {
-    let viewController = CitiesSearchViewController(showType: .citySearch)
-    viewController.coordinatesUpdateHandler = { [weak self] coordinates in
-      Task {
-        await self?.viewModel.update(locationCoordinates: coordinates)
-      }
+  override func updateContentUnavailableConfiguration(
+    using state: UIContentUnavailableConfigurationState
+  ) {
+    var config: UIContentUnavailableConfiguration?
+    if viewModel.viewModels.isEmpty {
+      var empty = UIContentUnavailableConfiguration.empty()
+      empty.background.backgroundColor = .systemBackground
+      empty.image = UIImage(systemName: "map.circle.fill")
+      empty.text = "No city selected"
+      empty.secondaryText = "Search for a city or use your current location to see the weather here"
+      config = empty
     }
+    contentUnavailableConfiguration = config
+  }
+  
+  @objc private func showCitySearchViewController() {
+    let viewModel = CitiesListViewModel()
+    viewModel.$locationCoordinates
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] coordinates in
+        guard let coordinates else {
+          return
+        }
+        Task {
+          await self?.viewModel.update(locationCoordinates: coordinates)
+        }
+      }
+      .store(in: &cancellables)
+
+    let viewController = CitiesSearchViewController(viewModel: viewModel)
     navigationController?.present(viewController, animated: true)
+  }
+  
+  @objc private func refreshData() {
+    viewModel.fetchToRefresh()
+    tableView.refreshControl?.endRefreshing()
   }
 }
 

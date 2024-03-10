@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class WeatherDetailsWindViewModel: WeatherDetailViewModeling {
+struct WeatherDetailsWindViewModel: WeatherDetailViewModeling {
   let cellId = WeatherDetailsWindCell.defaultReuseIdentifier
   let windDetailsViewModels:  [VerticalTitleSubtitleViewModel]
   let state: WeatherDetailsCellViewModelState
@@ -28,7 +28,7 @@ final class WeatherDetailsWindCell: BaseTableViewCell, WeatherDetailCellUpdating
   }
   
   private lazy var windDetailsViews: [VerticalTitleSubtitleView] = {
-    [VerticalTitleSubtitleView(type: .windDegree), VerticalTitleSubtitleView(type: .windSpeed)]
+    [VerticalTitleSubtitleView(type: .cloudness), VerticalTitleSubtitleView(type: .windSpeed)]
   }()
   
   private lazy var stackView: UIStackView = {

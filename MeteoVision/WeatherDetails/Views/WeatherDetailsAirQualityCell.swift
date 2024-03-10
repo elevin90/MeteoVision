@@ -38,6 +38,8 @@ final class WeatherDetailsAirQualityCell: BaseTableViewCell, WeatherDetailCellUp
     return contentVew
   }()
   
+  private lazy var loadingDataView = LoadingDataView()
+  
   private let offset = Constants.sideOffset
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -52,26 +54,33 @@ final class WeatherDetailsAirQualityCell: BaseTableViewCell, WeatherDetailCellUp
   override func setupView() {
     super.setupView()
     makeClearBackground()
-    airQuialityIndexView.setContentHuggingPriority(.defaultLow, for: .horizontal)
-   
     setupRoundedContentView()
-    roundedContentView.addSubview(stackView)
-    NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: roundedContentView.topAnchor, constant: offset),
-      stackView.leadingAnchor.constraint(equalTo: roundedContentView.leadingAnchor, constant: offset),
-      stackView.trailingAnchor.constraint(equalTo: roundedContentView.trailingAnchor, constant: -offset),
-      stackView.bottomAnchor.constraint(equalTo: roundedContentView.bottomAnchor, constant: -offset)
-    ])
-//    roundedContentView.addSubview(loadingDataView)
-//    NSLayoutConstraint.activate([
-//      loadingDataView.leadingAnchor.constraint(equalTo: roundedContentView.leadingAnchor),
-//      loadingDataView.trailingAnchor.constraint(equalTo: roundedContentView.trailingAnchor),
-//      loadingDataView.centerYAnchor.constraint(equalTo: roundedContentView.centerYAnchor)
-//    ])
-//    loadingDataView.isHidden = true
+    setupStackView()
+    setupLoadingDataView()
+    airQuialityIndexView.setContentHuggingPriority(.defaultLow, for: .horizontal)
   }
   
-  private func setupRoundedContentView() {
+  func update(with viewModel: WeatherDetailViewModeling) {
+    guard let detailsViewModel = viewModel as? WeatherDetailsAirQualityCellViewModel else {
+      return
+    }
+
+    airQuialityIndexView.isHidden = viewModel.state != .success
+    label.isHidden = viewModel.state != .success
+    loadingDataView.isHidden = viewModel.state == .success
+    loadingDataView.update(with: viewModel.state)
+    
+    if let aqiViewModel = detailsViewModel.aqiViewModel {
+      label.text = detailsViewModel.aqiDescription
+      airQuialityIndexView.update(with: aqiViewModel)
+    }
+  }
+}
+
+
+// MARK: Initial UI Setup
+private extension WeatherDetailsAirQualityCell {
+  func setupRoundedContentView() {
     addSubview(roundedContentView)
     NSLayoutConstraint.activate([
       roundedContentView.topAnchor.constraint(equalTo: self.topAnchor,
@@ -82,11 +91,23 @@ final class WeatherDetailsAirQualityCell: BaseTableViewCell, WeatherDetailCellUp
     ])
   }
   
-  func update(with viewModel: WeatherDetailViewModeling) {
-    guard let detailsViewModel = viewModel as? WeatherDetailsAirQualityCellViewModel, let aqiViewModel = detailsViewModel.aqiViewModel else {
-      return
-    }
-    airQuialityIndexView.update(with: aqiViewModel)
-    label.text = detailsViewModel.aqiDescription
+  func setupStackView() {
+    roundedContentView.addSubview(stackView)
+    NSLayoutConstraint.activate([
+      stackView.topAnchor.constraint(equalTo: roundedContentView.topAnchor, constant: offset),
+      stackView.leadingAnchor.constraint(equalTo: roundedContentView.leadingAnchor, constant: offset),
+      stackView.trailingAnchor.constraint(equalTo: roundedContentView.trailingAnchor, constant: -offset),
+      stackView.bottomAnchor.constraint(equalTo: roundedContentView.bottomAnchor, constant: -offset)
+    ])
+  }
+  
+  func setupLoadingDataView() {
+    roundedContentView.addSubview(loadingDataView)
+    NSLayoutConstraint.activate([
+      loadingDataView.leadingAnchor.constraint(equalTo: roundedContentView.leadingAnchor, constant: offset),
+      loadingDataView.trailingAnchor.constraint(equalTo: roundedContentView.trailingAnchor, constant: -offset),
+      loadingDataView.topAnchor.constraint(equalTo: roundedContentView.topAnchor, constant: offset),
+      loadingDataView.bottomAnchor.constraint(equalTo: roundedContentView.bottomAnchor, constant: -offset)
+    ])
   }
 }
