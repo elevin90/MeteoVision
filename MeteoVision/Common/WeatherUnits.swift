@@ -8,6 +8,7 @@
 import Foundation
 
 struct WeatherUnitTitles {
+  // Used for application's units
   static func appTitle(for unit: WeatherUnits) -> String {
     switch unit {
     case .system:
@@ -19,6 +20,7 @@ struct WeatherUnitTitles {
     }
   }
   
+  // Used for open weather units
   static func apiTitle(for unit: WeatherUnits, locale: NSLocale = NSLocale.current as NSLocale) -> String {
     switch unit {
     case .system:

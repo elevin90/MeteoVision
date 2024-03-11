@@ -22,12 +22,16 @@ final class WeatherDetailsViewModel {
   @Published private(set) var viewModels: [WeatherDetailViewModeling] = []
   @Published private(set) var networkStatus: NWPath.Status?
 
+  // Providers and services
   private var locationCoordinates: CLLocationCoordinate2D?
   private var unitsProvider: WeatherUnitsProviding
   private var networkMonitor: NetworkMonitoring
   
+  // Cells viewmodels with initial state .loading
   private var weatherDetailsCityViewModel = WeatherDetailsCityCellViewModel()
-  private var weatherDetailsWindViewModel = WeatherDetailsWindViewModel()
+  private var weatherDetailsWindViewModel = WeatherDetailsWindViewModel(
+    windDetailsViewModels: [.init(type: .cloudness), .init(type: .windSpeed)]
+  )
   private var weatherDetailsAQIViewModel = WeatherDetailsAirQualityCellViewModel()
   
   private let weatherProvider: WeatherProviding
@@ -57,6 +61,7 @@ final class WeatherDetailsViewModel {
     setupNetworkMonitoring()
   }
   
+  // Setup and observe network connection
   func setupNetworkMonitoring() {
     self.networkMonitor.pathUpdateHandler = { [weak self] path in
       guard self?.networkStatus != path.status else {
@@ -67,6 +72,8 @@ final class WeatherDetailsViewModel {
     networkMonitor.start(queue: DispatchQueue(label: "NetworkMonitor queue"))
   }
 
+  /// Fetch data and update cell view models with it
+  /// If there are no response, set error state in cell viewmodels
   func fetchWeatherDetails() async {
     guard let locationCoordinates else {
       return
@@ -87,42 +94,21 @@ final class WeatherDetailsViewModel {
         longtitude: longtitude,
         apiKey: APIKeys.key
       )
-      let (weather, airPollution) = await (try? fetchCurrentWeather, try? fetchCurrentAirPollution)
-      updateWeatherViewModels(from: weather)
-      updateAirQualityViewModel(from: airPollution)
-  
-      viewModels = [
-        weatherDetailsCityViewModel,
-        weatherDetailsWindViewModel,
-        weatherDetailsAQIViewModel
-      ]
-    } catch {
-      guard let error = error as? WeatherProviderError else {
-        return
-      }
-      switch error {
-      case .airQuality:
+      do {
+        let (weather, airPollution) = await (try? fetchCurrentWeather, try? fetchCurrentAirPollution)
+        updateWeatherViewModels(from: weather)
+        updateAirQualityViewModel(from: airPollution)
+        
         viewModels = [
-          WeatherDetailsCityCellViewModel(state: .failure),
-          WeatherDetailsWindViewModel(windDetailsViewModels: [
-            .init(state: .failure, type: .cloudness),
-            .init(state: .failure, type: .windSpeed),
-          ]),
-          WeatherDetailsAirQualityCellViewModel(state: .failure)
-        ]
-      case .weather:
-        viewModels = [
-          WeatherDetailsCityCellViewModel(state: .failure),
-          WeatherDetailsWindViewModel(windDetailsViewModels: [
-            .init(state: .failure, type: .cloudness),
-            .init(state: .failure, type: .windSpeed),
-          ]),
+          weatherDetailsCityViewModel,
+          weatherDetailsWindViewModel,
           weatherDetailsAQIViewModel
         ]
       }
     }
   }
   
+  // Fetch new data for pull to refresh action at least once in 10 seconds
   func fetchToRefresh() {
     guard Date().timeIntervalSince(lastFetchTimestamp) >= refreshDataInterva else {
       return
@@ -160,7 +146,10 @@ final class WeatherDetailsViewModel {
       ])
     } else {
       weatherDetailsCityViewModel = WeatherDetailsCityCellViewModel(state: .failure)
-      weatherDetailsWindViewModel = WeatherDetailsWindViewModel(state: .failure)
+      weatherDetailsWindViewModel = WeatherDetailsWindViewModel(windDetailsViewModels: [
+        .init(state: .failure, type: .cloudness),
+        .init(state: .failure, type: .windSpeed),
+      ])
     }
   }
   
