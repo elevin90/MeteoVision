@@ -13,13 +13,15 @@ import CoreLocation
 
 final class WeatherDetailsViewModelTests: XCTestCase {
   final class WeatherProviderMock: WeatherProviding {
-    private let isSuccess: Bool
-    
-    init(isSuccess: Bool) {
-      self.isSuccess = isSuccess
+    func getCurrentWeather(latitude: String, longtitude: String, units: String, apiKey: String) async throws -> MVAPIClient.CurrentWeather {
+      if isSuccess {
+        return CurrentWeather.preview
+      } else {
+        throw WeatherProviderError.weather
+      }
     }
     
-    func getCurrentAirPollution(latitude: String, longtitude: String) async throws -> AirPolution {
+    func getCurrentAirPollution(latitude: String, longtitude: String, apiKey: String) async throws -> MVAPIClient.AirPolution {
       if isSuccess {
         return AirPolution.preview
       } else {
@@ -27,12 +29,10 @@ final class WeatherDetailsViewModelTests: XCTestCase {
       }
     }
     
-    func getCurrentWeather(latitude: String, longtitude: String, units: String) async throws -> CurrentWeather {
-      if isSuccess {
-        return CurrentWeather.preview
-      } else {
-        throw WeatherProviderError.weather
-      }
+    private let isSuccess: Bool
+    
+    init(isSuccess: Bool) {
+      self.isSuccess = isSuccess
     }
   }
   
