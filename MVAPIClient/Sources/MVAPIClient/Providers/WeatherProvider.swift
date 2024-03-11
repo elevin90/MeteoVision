@@ -12,14 +12,27 @@ public enum WeatherProviderError: Error {
 }
 
 public protocol WeatherProviding: MVAPIPClient {
-  func getCurrentWeather(latitude: String, longtitude: String, units: String) async throws -> CurrentWeather
-  func getCurrentAirPollution(latitude: String, longtitude: String) async throws -> AirPolution
+  func getCurrentWeather(
+    latitude: String,
+    longtitude: String,
+    units: String,
+    apiKey: String
+  ) async throws -> CurrentWeather
+  func getCurrentAirPollution(
+    latitude: String,
+    longtitude: String,
+    apiKey: String
+  ) async throws -> AirPolution
 }
 
 public final class WeatherProvider: WeatherProviding {
-  public func getCurrentAirPollution(latitude: String, longtitude: String) async throws -> AirPolution {
+  public func getCurrentAirPollution(
+    latitude: String,
+    longtitude: String,
+    apiKey: String
+  ) async throws -> AirPolution {
     do {
-      let response = try await sendRequest(endPoint: WeatherEndpoint.currentPollution(latitude: latitude, longtitude: longtitude), responseModel: AirQualityResponse.self)
+      let response = try await sendRequest(endPoint: WeatherEndpoint.currentPollution(latitude: latitude, longtitude: longtitude, apiKey: apiKey), responseModel: AirQualityResponse.self)
       
       if let airPolution = response.airQualityList.first?.airPolution {
         return airPolution
@@ -33,9 +46,10 @@ public final class WeatherProvider: WeatherProviding {
   
   public init() { }
   
-  public func getCurrentWeather(latitude: String, longtitude: String, units: String) async throws -> CurrentWeather {
+  public func getCurrentWeather(latitude: String, longtitude: String, units: String,
+                                apiKey: String) async throws -> CurrentWeather {
     do {
-      let currentWeatherResponse = try await sendRequest(endPoint: WeatherEndpoint.currentDay(latitude: latitude, longtitude: longtitude, units: units), responseModel: CurrentWeather.self)
+      let currentWeatherResponse = try await sendRequest(endPoint: WeatherEndpoint.currentDay(latitude: latitude, longtitude: longtitude, units: units, apiKey: apiKey), responseModel: CurrentWeather.self)
       return currentWeatherResponse
     } catch {
       throw WeatherProviderError.weather

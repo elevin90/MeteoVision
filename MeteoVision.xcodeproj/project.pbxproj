@@ -21,6 +21,7 @@
 		CB774CF22B9E544F0060627B /* CitiesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CF12B9E544F0060627B /* CitiesListViewModelTests.swift */; };
 		CB774CF42B9E59AF0060627B /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CF32B9E59AF0060627B /* RouterTests.swift */; };
 		CB774CF62B9E70260060627B /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CF52B9E70260060627B /* EmptyDataView.swift */; };
+		CB774CF82B9EE8380060627B /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CF72B9EE8380060627B /* APIKeys.swift */; };
 		CBA95F4A2B9D02530099AEE2 /* WeatherDetailsAirQualityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA95F492B9D02530099AEE2 /* WeatherDetailsAirQualityCell.swift */; };
 		CBA95F4C2B9D07C30099AEE2 /* AirQualityIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA95F4B2B9D07C30099AEE2 /* AirQualityIndexView.swift */; };
 		CBA95F4E2B9D10880099AEE2 /* AirQualityIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA95F4D2B9D10880099AEE2 /* AirQualityIndexViewModel.swift */; };
@@ -85,6 +86,7 @@
 		CB774CF12B9E544F0060627B /* CitiesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListViewModelTests.swift; sourceTree = "<group>"; };
 		CB774CF32B9E59AF0060627B /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
 		CB774CF52B9E70260060627B /* EmptyDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
+		CB774CF72B9EE8380060627B /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		CBA95F492B9D02530099AEE2 /* WeatherDetailsAirQualityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsAirQualityCell.swift; sourceTree = "<group>"; };
 		CBA95F4B2B9D07C30099AEE2 /* AirQualityIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityIndexView.swift; sourceTree = "<group>"; };
 		CBA95F4D2B9D10880099AEE2 /* AirQualityIndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityIndexViewModel.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				CB62DCF02B9AFF27000DFBDD /* WeatherUnitsProvider.swift */,
 				CB4A95742B9CD4E500B154D1 /* LoadingDataView.swift */,
 				CB774CE92B9E116B0060627B /* Router.swift */,
+				CB774CF72B9EE8380060627B /* APIKeys.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB774CF82B9EE8380060627B /* APIKeys.swift in Sources */,
 				CBB2C24F2B967B7E00642D91 /* CitiesSearchViewController.swift in Sources */,
 				CBED7CCC2B9A638E008F5FA1 /* WeatherDetailsCityCellViewModel.swift in Sources */,
 				CBB2C24B2B967B7E00642D91 /* AppDelegate.swift in Sources */,
@@ -665,8 +669,8 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Share your location to get weather forecast";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -694,8 +698,8 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Share your location to get weather forecast";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

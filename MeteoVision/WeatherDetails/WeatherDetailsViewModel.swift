@@ -80,11 +80,12 @@ final class WeatherDetailsViewModel {
       async let fetchCurrentWeather = weatherProvider.getCurrentWeather(
         latitude: latitude,
         longtitude: longtitude,
-        units: WeatherUnitTitles.apiTitle(for: unitsProvider.getSelectedWeatherUnit())
+        units: WeatherUnitTitles.apiTitle(for: unitsProvider.getSelectedWeatherUnit()), apiKey: APIKeys.key
       )
       async let fetchCurrentAirPollution = weatherProvider.getCurrentAirPollution(
         latitude: latitude,
-        longtitude: longtitude
+        longtitude: longtitude,
+        apiKey: APIKeys.key
       )
       let (weather, airPollution) = await (try? fetchCurrentWeather, try? fetchCurrentAirPollution)
       updateWeatherViewModels(from: weather)

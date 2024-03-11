@@ -7,8 +7,8 @@
 import Foundation
 
 enum WeatherEndpoint {
-  case currentDay(latitude: String, longtitude: String, units: String)
-  case currentPollution(latitude: String, longtitude: String)
+  case currentDay(latitude: String, longtitude: String, units: String, apiKey: String)
+  case currentPollution(latitude: String, longtitude: String, apiKey: String)
 }
 
 extension WeatherEndpoint: MVEndpoint {
@@ -17,9 +17,9 @@ extension WeatherEndpoint: MVEndpoint {
   }
   var path: String {
     return switch self {
-    case .currentDay(_, _, _):
+    case .currentDay(_, _, _, _):
       "/data/2.5/weather"
-    case .currentPollution(_, _):
+    case .currentPollution(_, _, _):
       "/data/2.5/air_pollution"
     }
   }
@@ -34,16 +34,16 @@ extension WeatherEndpoint: MVEndpoint {
   
   var queryItems: [URLQueryItem] {
     return switch self {
-    case .currentDay(let latitude, let longtitude, let units):
+    case .currentDay(let latitude, let longtitude, let units, let apiKey):
       [
-        URLQueryItem(name: "APPID", value: "dfb922ad45c3a804ffd35ac0a5c94587"),
+        URLQueryItem(name: "APPID", value: apiKey),
         URLQueryItem(name: "lon", value: longtitude),
         URLQueryItem(name: "lat", value: latitude),
         URLQueryItem(name: "units", value: units)
       ]
-    case .currentPollution(let latitude, let longtitude):
+    case .currentPollution(let latitude, let longtitude, let apiKey):
       [
-        URLQueryItem(name: "APPID", value: "dfb922ad45c3a804ffd35ac0a5c94587"),
+        URLQueryItem(name: "APPID", value: apiKey),
         URLQueryItem(name: "lon", value: longtitude),
         URLQueryItem(name: "lat", value: latitude)
       ]
