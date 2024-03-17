@@ -32,6 +32,13 @@ public protocol MVWeatherCacheProviding {
 }
 
 public final class MVWeatherCacheProvider: MVWeatherCacheProviding {
+
+  public init() { }
+  
+  /// Saves remote OpenWeatherMap response to local json file
+  /// - Parameters:
+  ///   - response: Remote OpenWeatherMap response codable model
+  ///   - type: Response codable model type
   public func cache<T: Encodable>(_ response: T, type: MVWeatherCacheResponse) throws {
     do {
       let jsonData = try JSONEncoder().encode(response)

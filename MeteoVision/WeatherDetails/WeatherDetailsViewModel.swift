@@ -6,6 +6,7 @@
 //
 
 import MVAPIClient
+import MVWeatherCacheResponse
 import CoreLocation
 import Combine
 import Network
@@ -26,6 +27,7 @@ final class WeatherDetailsViewModel {
   private var locationCoordinates: CLLocationCoordinate2D?
   private var unitsProvider: WeatherUnitsProviding
   private var networkMonitor: NetworkMonitoring
+  private let cacheProvider: MVWeatherCacheProviding
   
   // Cells viewmodels with initial state .loading
   private var weatherDetailsCityViewModel = WeatherDetailsCityCellViewModel()
@@ -41,12 +43,14 @@ final class WeatherDetailsViewModel {
   init(
     weatherSerivce: WeatherProviding = WeatherProvider(),
     unitsProvider: WeatherUnitsProviding,
-    networkMonitor: NetworkMonitoring = NWPathMonitor()
+    networkMonitor: NetworkMonitoring = NWPathMonitor(),
+    cacheProvider: MVWeatherCacheProviding = MVWeatherCacheProvider()
   ) {
     self.weatherProvider = weatherSerivce
     self.unitsProvider = unitsProvider
     self.networkMonitor = networkMonitor
-
+    self.cacheProvider = cacheProvider
+    
     self.unitsProvider.newUnitUpdateHandler = { [weak self] selectedUnit in
       guard let self else {
         return
@@ -95,17 +99,23 @@ final class WeatherDetailsViewModel {
         apiKey: APIKeys.key
       )
       do {
-        let (weather, airPollution) = await (try? fetchCurrentWeather, try? fetchCurrentAirPollution)
+        let (weather, pollution) = await (try? fetchCurrentWeather, try? fetchCurrentAirPollution)
         updateWeatherViewModels(from: weather)
-        updateAirQualityViewModel(from: airPollution)
+        updateAirQualityViewModel(from: pollution)
         
         viewModels = [
           weatherDetailsCityViewModel,
           weatherDetailsWindViewModel,
           weatherDetailsAQIViewModel
         ]
+        cache(weather: weather, pollution: pollution)
       }
     }
+  }
+  
+  private func cache(weather:  CurrentWeather?, pollution: AirPolution?) {
+    try? cacheProvider.cache(weather, type: .weather)
+    try? cacheProvider.cache(pollution, type: .pollution)
   }
   
   // Fetch new data for pull to refresh action at least once in 10 seconds
