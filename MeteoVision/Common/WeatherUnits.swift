@@ -25,9 +25,9 @@ struct WeatherUnitTitles {
     switch unit {
     case .system:
       let unitValue = locale.object(forKey: NSLocale.Key(rawValue: "kCFLocaleTemperatureUnitKey")) as? String
-      return unitValue ?? "standard"
+      return unitValue?.lowercased() == "celsius" ? "metric" : "imperial"
     case .standard:
-      return "standard"
+      return "imperial"
     case .metric:
       return "metric"
     }

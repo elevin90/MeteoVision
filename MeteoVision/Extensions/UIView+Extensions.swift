@@ -13,7 +13,6 @@ extension UIView {
     radius: CGFloat = 2
   ) {
     layer.cornerRadius = 8
-    layer.cornerRadius = 8
     layer.shadowColor = UIColor.black.cgColor
     layer.shadowOpacity = opacity
     layer.shadowOffset = CGSize(width: 0, height: 2)

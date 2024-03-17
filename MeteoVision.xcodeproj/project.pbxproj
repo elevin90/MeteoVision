@@ -22,6 +22,7 @@
 		CB774CF42B9E59AF0060627B /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CF32B9E59AF0060627B /* RouterTests.swift */; };
 		CB774CF62B9E70260060627B /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CF52B9E70260060627B /* EmptyDataView.swift */; };
 		CB774CF82B9EE8380060627B /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB774CF72B9EE8380060627B /* APIKeys.swift */; };
+		CB823D812BA6D5300043A9DC /* MVWeatherCacheResponse in Frameworks */ = {isa = PBXBuildFile; productRef = CB823D802BA6D5300043A9DC /* MVWeatherCacheResponse */; };
 		CBA95F4A2B9D02530099AEE2 /* WeatherDetailsAirQualityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA95F492B9D02530099AEE2 /* WeatherDetailsAirQualityCell.swift */; };
 		CBA95F4C2B9D07C30099AEE2 /* AirQualityIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA95F4B2B9D07C30099AEE2 /* AirQualityIndexView.swift */; };
 		CBA95F4E2B9D10880099AEE2 /* AirQualityIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA95F4D2B9D10880099AEE2 /* AirQualityIndexViewModel.swift */; };
@@ -87,6 +88,7 @@
 		CB774CF32B9E59AF0060627B /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
 		CB774CF52B9E70260060627B /* EmptyDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
 		CB774CF72B9EE8380060627B /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		CB823D7F2BA6D4B90043A9DC /* MVWeatherCacheResponse */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MVWeatherCacheResponse; sourceTree = "<group>"; };
 		CBA95F492B9D02530099AEE2 /* WeatherDetailsAirQualityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsAirQualityCell.swift; sourceTree = "<group>"; };
 		CBA95F4B2B9D07C30099AEE2 /* AirQualityIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityIndexView.swift; sourceTree = "<group>"; };
 		CBA95F4D2B9D10880099AEE2 /* AirQualityIndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityIndexViewModel.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB823D812BA6D5300043A9DC /* MVWeatherCacheResponse in Frameworks */,
 				CBEF35472B967FBF00B2C160 /* MVLocalCountriesProvider in Frameworks */,
 				CBEF35572B97D74000B2C160 /* MVLocationProvider in Frameworks */,
 				CBEF355F2B99048D00B2C160 /* MVAPIClient in Frameworks */,
@@ -189,6 +192,7 @@
 		CBB2C23E2B967B7E00642D91 = {
 			isa = PBXGroup;
 			children = (
+				CB823D7F2BA6D4B90043A9DC /* MVWeatherCacheResponse */,
 				CBEF355B2B98F2F000B2C160 /* MVAPIClient */,
 				CBEF35552B97D69F00B2C160 /* MVLocationProvider */,
 				CBEF35442B967DD500B2C160 /* MVLocalCountriesProvider */,
@@ -338,6 +342,7 @@
 				CBEF35462B967FBF00B2C160 /* MVLocalCountriesProvider */,
 				CBEF35562B97D74000B2C160 /* MVLocationProvider */,
 				CBEF355E2B99048D00B2C160 /* MVAPIClient */,
+				CB823D802BA6D5300043A9DC /* MVWeatherCacheResponse */,
 			);
 			productName = MeteoVision;
 			productReference = CBB2C2472B967B7E00642D91 /* MeteoVision.app */;
@@ -411,6 +416,8 @@
 				Base,
 			);
 			mainGroup = CBB2C23E2B967B7E00642D91;
+			packageReferences = (
+			);
 			productRefGroup = CBB2C2482B967B7E00642D91 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -834,6 +841,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CB823D802BA6D5300043A9DC /* MVWeatherCacheResponse */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MVWeatherCacheResponse;
+		};
 		CBEF35462B967FBF00B2C160 /* MVLocalCountriesProvider */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MVLocalCountriesProvider;
