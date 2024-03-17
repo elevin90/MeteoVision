@@ -44,60 +44,8 @@ final class WeatherDetailsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .secondarySystemBackground
-    setupNavigationController()
-    setupTableView()
-    setNeedsUpdateContentUnavailableConfiguration()
-    
-    viewModel.$networkStatus
-      .receive(on: DispatchQueue.main)
-      .sink { [weak self] status in
-        guard let status else {
-          return
-        }
-        switch status {
-        case .satisfied:
-          break
-        case .unsatisfied, .requiresConnection:
-          self?.router.showAlert(title: "Lost connection", message: "Please check the internet connection", buttonTitle: "OK", on: self, completion: nil)
-        @unknown default:
-          assertionFailure()
-          break
-        }
-      }.store(in: &cancellables)
-    
-    viewModel.$viewModels
-      .receive(on: DispatchQueue.main)
-      .sink { [weak self] _ in
-        self?.setNeedsUpdateContentUnavailableConfiguration()
-        self?.tableView.reloadData()
-        self?.tableView.refreshControl?.endRefreshing()
-      }.store(in: &cancellables)
-    Task {
-      await viewModel.fetchWeatherDetails()
-    }
-  }
-  
-  private func setupNavigationController() {
-    self.navigationItem.title = "Weather details"
-    navigationController?.navigationBar.prefersLargeTitles = true
-    let searchItem = UIBarButtonItem(
-      barButtonSystemItem: .search,
-      target: self,
-      action: #selector(showCitySearchViewController)
-    )
-    navigationItem.rightBarButtonItems = [searchItem]
-  }
-  
-  private func setupTableView() {
-    view.addSubview(tableView)
-    NSLayoutConstraint.activate([
-      tableView.topAnchor.constraint(equalTo: view.topAnchor),
-      tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-    ])
-    tableView.reloadData()
+    setupUI()
+    setupViewModel()
   }
   
   override func updateContentUnavailableConfiguration(
@@ -115,6 +63,35 @@ final class WeatherDetailsViewController: UIViewController {
     contentUnavailableConfiguration = config
   }
   
+  private func setupViewModel() {
+    viewModel.$networkStatus
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] status in
+        guard let status,
+              status == .unsatisfied || status == .requiresConnection  else {
+          return
+        }
+        self?.router.showAlert(
+          title: "Lost connection",
+          message: "Please check the internet connection",
+          buttonTitle: "OK",
+          on: self,
+          completion: nil
+        )
+      }.store(in: &cancellables)
+    
+    viewModel.$viewModels
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] _ in
+        self?.setNeedsUpdateContentUnavailableConfiguration()
+        self?.tableView.reloadData()
+        self?.tableView.refreshControl?.endRefreshing()
+      }.store(in: &cancellables)
+    Task {
+      await viewModel.fetchWeatherDetails()
+    }
+  }
+  
   @objc private func showCitySearchViewController() {
     let viewModel = CitiesListViewModel()
     viewModel.$locationCoordinates
@@ -128,7 +105,7 @@ final class WeatherDetailsViewController: UIViewController {
         }
       }
       .store(in: &cancellables)
-
+    
     let viewController = CitiesSearchViewController(viewModel: viewModel)
     navigationController?.present(viewController, animated: true)
   }
@@ -152,5 +129,37 @@ extension WeatherDetailsViewController: UITableViewDataSource {
     )
     (cell as? WeatherDetailCellUpdating)?.update(with: cellViewModel)
     return cell
+  }
+}
+
+// MARK: - UI Setup
+private extension WeatherDetailsViewController {
+  private func setupUI() {
+    self.view.backgroundColor = .secondarySystemBackground
+    setupNavigationController()
+    setupTableView()
+    setNeedsUpdateContentUnavailableConfiguration()
+  }
+  
+  private func setupNavigationController() {
+    self.navigationItem.title = "Weather details"
+    navigationController?.navigationBar.prefersLargeTitles = true
+    let searchItem = UIBarButtonItem(
+      barButtonSystemItem: .search,
+      target: self,
+      action: #selector(showCitySearchViewController)
+    )
+    navigationItem.rightBarButtonItems = [searchItem]
+  }
+  
+  private func setupTableView() {
+    view.addSubview(tableView)
+    NSLayoutConstraint.activate([
+      tableView.topAnchor.constraint(equalTo: view.topAnchor),
+      tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    ])
+    tableView.reloadData()
   }
 }
