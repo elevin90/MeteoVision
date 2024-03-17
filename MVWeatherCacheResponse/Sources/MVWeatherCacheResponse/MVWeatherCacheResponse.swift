@@ -8,7 +8,9 @@ import MVAPIClient
 import Foundation
 
 public enum MVWeatherCacheError: Error {
-  case cannotEncodeModel
+  case encodingFailed
+  case decodingFailed
+  case noDataFound
   case noDocumentsFolderFound
   case cannotSaveModel
 }
@@ -32,7 +34,7 @@ public protocol MVWeatherCacheProviding {
 }
 
 public final class MVWeatherCacheProvider: MVWeatherCacheProviding {
-
+  
   public init() { }
   
   /// Saves remote OpenWeatherMap response to local json file
@@ -52,7 +54,28 @@ public final class MVWeatherCacheProvider: MVWeatherCacheProviding {
         throw MVWeatherCacheError.cannotSaveModel
       }
     } catch {
-      throw MVWeatherCacheError.cannotEncodeModel
+      throw MVWeatherCacheError.encodingFailed
+    }
+  }
+  
+  /// Gets previously saved OpenWeatherMap response from local json file
+  /// - Parameters:
+  ///   - type: Response codable model type
+  public func read<T: Codable>(type: MVWeatherCacheResponse) throws -> T? {
+    guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+      throw MVWeatherCacheError.noDocumentsFolderFound
+    }
+    let fileURL = documentsDirectory.appendingPathComponent("\(type.cacheFileName).json", isDirectory: false)
+    do {
+      let jsonData = try Data(contentsOf: fileURL)
+      switch type {
+      case .weather:
+        return try? JSONDecoder().decode(CurrentWeather.self, from: jsonData) as? T
+      case .pollution:
+        return try? JSONDecoder().decode(AirPolution.self, from: jsonData) as? T
+      }
+    } catch {
+      throw MVWeatherCacheError.noDataFound
     }
   }
 }
